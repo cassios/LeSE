@@ -6,9 +6,6 @@
 package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
-import br.game.reuse.lese.house.QuestionHouse;
-import br.game.reuse.lese.outcome.HouseOutcome;
-import br.game.reuse.lese.question.Question;
 import java.util.Scanner;
 
 /**
@@ -51,10 +48,7 @@ public class BoardGame {
                }
             }
         }
-
-    }
-    
-    
+        
         if(winner != null) {
             System.out.println("Player " + winner.getNickname() + " won!!!");
         }
