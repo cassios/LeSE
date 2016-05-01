@@ -22,6 +22,10 @@ public class Player {
         this.pawn = new Pawn("red");
     }
     
+    public String getNickname() {
+        return this.nickname;
+    }
+    
     public House getPawnPosition() {
         Board board = Board.getInstance();
         return board.getPlayerHouse(this);

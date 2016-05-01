@@ -8,6 +8,8 @@ package br.game.reuse.lese.board;
 import br.game.reuse.lesse.house.House;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 
 /**
  *
@@ -40,7 +42,20 @@ public class Board {
         this.houses.add(house);
         return this.houses.size();
     }
-        
+    
+    public void addPlayer(String nickname, String pawnColor) {
+        Player newPlayer = new Player(nickname);
+        this.players.put(newPlayer, 0);
+    }
+    
+    public ArrayList<Player> getPlayers() {
+        ArrayList<Player> playersArray = new ArrayList<>();
+        for (Entry<Player, Integer> item : this.players.entrySet()) {
+            playersArray.add(item.getKey());
+        }
+        return playersArray;
+    }
+    
     private int getPlayerHouseId(Player p) {
         return this.players.get(p);
     }
@@ -53,5 +68,27 @@ public class Board {
         int currentPos = getPlayerHouseId(p);
         int newPos = currentPos + nHouses;
         return this.players.put(p, newPos);
+    }
+    
+    public boolean hasWinner() {
+        int finalHouseId = this.houses.size() - 1;
+        for (Player p : getPlayers()) {
+            if(getPlayerHouseId(p) == finalHouseId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public Player getWinner() {
+        if(hasWinner()) {
+            int finalHouseId = this.houses.size() - 1;
+            for (Player p : getPlayers()) {
+                if(getPlayerHouseId(p) == finalHouseId) {
+                    return p;
+                }
+            }
+        }
+        return null;
     }
 }
