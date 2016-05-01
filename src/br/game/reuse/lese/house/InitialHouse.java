@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.game.reuse.lesse.house;
+package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.Player;
-import br.game.reuse.lesse.outcome.HouseOutcome;
+import br.game.reuse.lese.outcome.HouseOutcome;
 
 /**
  *
  * @author cass
  */
-public class FinalHouse extends House {
+public class InitialHouse extends House {
     private final String message;
     
-    FinalHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
+    InitialHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
         super(id, outcome, phase);
         this.message = msg;
     }

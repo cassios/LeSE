@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.game.reuse.lesse.presenters.interfaces;
+package br.game.reuse.lese.presenters.interfaces;
 
-import br.game.reuse.lesse.house.House;
+import br.game.reuse.lese.house.House;
 
 /**
  *

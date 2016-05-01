@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.game.reuse.lesse.outcome;
+package br.game.reuse.lese.outcome;
 
 /**
  *
  * @author cass
  */
-public class PenalityOutcome extends HouseOutcome {
+public class BonusOutcome  extends HouseOutcome {
+    BonusOutcome(int nHouses, int points, float extraPenality) {
+        super(points, nHouses, extraPenality);
+    }
     
-    PenalityOutcome(int nHouses, int points) {
+    BonusOutcome(int nHouses, int points) {
         super(points, nHouses, 1);
     }
     
@@ -19,5 +22,4 @@ public class PenalityOutcome extends HouseOutcome {
     public void apply() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
