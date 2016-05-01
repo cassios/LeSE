@@ -6,9 +6,6 @@
 package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
-import br.game.reuse.lese.house.QuestionHouse;
-import br.game.reuse.lese.outcome.HouseOutcome;
-import br.game.reuse.lese.question.Question;
 import java.util.Scanner;
 
 /**
@@ -19,7 +16,7 @@ public class BoardGame {
     private Board board;
     
     
-    public creatBoard(BoardBuilder builder) {
+    public void creatBoard(BoardBuilder builder) {
         
         builder.buildBoard();
         builder.buildHouses();
@@ -40,7 +37,7 @@ public class BoardGame {
     public void run() {
         Player winner = null;
         
-        while(true) {
+        while(winner == null) {
             for (Player p : this.board.getPlayers()) {
                House playerHouse = this.board.getPlayerHouse(p);
                playerHouse.execute(p);
@@ -51,7 +48,9 @@ public class BoardGame {
                }
             }
         }
-        System.out.println("Player " + winner.getNickname() + " won!!!");
-    }
-    
+        
+        if(winner != null) {
+            System.out.println("Player " + winner.getNickname() + " won!!!");
+        }
+    }    
 }
