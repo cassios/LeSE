@@ -9,12 +9,12 @@ package br.game.reuse.lese.outcome;
  *
  * @author cass
  */
-public class BonusOutcome  extends HouseOutcome {
-    BonusOutcome(int nHouses, int points, float extraPenality) {
+public class BonusOutcome extends HouseOutcome {
+    public BonusOutcome(int nHouses, int points, float extraPenality) {
         super(points, nHouses, extraPenality);
     }
     
-    BonusOutcome(int nHouses, int points) {
+    public BonusOutcome(int nHouses, int points) {
         super(points, nHouses, 1);
     }
     

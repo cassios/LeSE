@@ -18,7 +18,7 @@ public abstract class House {
     private HouseOutcome outcome;
     private final DevelopmentPhase devPhase;
     
-    House(int id, HouseOutcome outcome, DevelopmentPhase phase) {
+    public House(int id, HouseOutcome outcome, DevelopmentPhase phase) {
         this.id = id;
         this.outcome = outcome;
         this.devPhase = phase;

@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.board;
 
-import br.game.reuse.lesse.house.House;
+import br.game.reuse.lese.house.House;
 
 /**
  *
@@ -14,7 +14,7 @@ import br.game.reuse.lesse.house.House;
 public class Pawn {
     private final String color;
     
-    Pawn(String color) {
+    public Pawn(String color) {
         this.color = color;
     }
     

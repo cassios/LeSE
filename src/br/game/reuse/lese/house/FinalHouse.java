@@ -16,7 +16,7 @@ import br.game.reuse.lese.outcome.HouseOutcome;
 public class FinalHouse extends House {
     private final String message;
     
-    FinalHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
+    public FinalHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
         super(id, outcome, phase);
         this.message = msg;
     }

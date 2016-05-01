@@ -17,7 +17,7 @@ public class Question {
     private Set<String> choices;
     private String answer;
     
-    protected Question(String description, String explanation) {
+    public Question(String description, String explanation) {
         this.description = description;
         this.explanation = explanation;
     }

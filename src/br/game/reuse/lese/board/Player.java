@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.board;
 
-import br.game.reuse.lesse.house.House;
+import br.game.reuse.lese.house.House;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Player {
     private int accumulatedPoints;
     private final Pawn pawn;
     
-    Player(String nickname) {
+    public Player(String nickname) {
         this.nickname = nickname;
         this.accumulatedPoints = 0;
         this.pawn = new Pawn("red");
