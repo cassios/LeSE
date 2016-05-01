@@ -9,8 +9,7 @@ import br.game.reuse.lesse.house.House;
 import br.game.reuse.lesse.house.QuestionHouse;
 import br.game.reuse.lesse.outcome.HouseOutcome;
 import br.game.reuse.lese.question.Question;
-import outcome.QuestionOutcome;
-import question.MultipleChoiceQuestion;
+import java.util.Scanner;
 
 /**
  *
@@ -21,8 +20,7 @@ public class BoardGame {
     
     
     public creatBoard(int numberOfHouses) {
-        this.board = new Board();
-        
+    /*    
         for(int i=1; i<=numberOfHouses; i++) {
             if(i%2 != 0) {
                 Question q = new MultipleChoiceQuestion("description" + 1, "no words");
@@ -35,6 +33,36 @@ public class BoardGame {
                 this.board.addHouse(qh);
             }
         }
+*/
+    }
+    
+    public void setUpGame() {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("How many players?:");
+        int nPlayers = sc.nextInt();
+        
+        for (int i = 1; i <= nPlayers; i++) {
+            System.out.println("Enter player " + i + " nickname." );
+            String playerName = sc.next();
+            this.board.addPlayer(playerName, "red");
+        }
+    }
+    
+    public void run() {
+        Player winner = null;
+        
+        while(true) {
+            for (Player p : this.board.getPlayers()) {
+               House playerHouse = this.board.getPlayerHouse(p);
+               playerHouse.execute(p);
+               
+               if(this.board.hasWinner()) {
+                   winner = this.board.getWinner();
+                   break;
+               }
+            }
+        }
+        System.out.println("Player " + winner.getNickname() + " won!!!");
     }
     
 }
