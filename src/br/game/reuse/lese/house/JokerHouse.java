@@ -16,7 +16,7 @@ import br.game.reuse.lese.outcome.HouseOutcome;
 public class JokerHouse extends House {
     private final String description;
     
-    JokerHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String description) {
+    public JokerHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String description) {
         super(id, outcome, phase);
         this.description = description;
     }

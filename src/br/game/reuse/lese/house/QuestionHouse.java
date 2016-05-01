@@ -17,7 +17,7 @@ import br.game.reuse.lese.question.Question;
 public class QuestionHouse extends House {
     private Question question;
     
-    QuestionHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, Question q) {
+    public QuestionHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, Question q) {
         super(id, outcome, phase);
         this.question = q;
     }

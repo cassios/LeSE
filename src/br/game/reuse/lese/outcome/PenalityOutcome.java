@@ -11,7 +11,7 @@ package br.game.reuse.lese.outcome;
  */
 public class PenalityOutcome extends HouseOutcome {
     
-    PenalityOutcome(int nHouses, int points) {
+    public PenalityOutcome(int nHouses, int points) {
         super(points, nHouses, 1);
     }
     

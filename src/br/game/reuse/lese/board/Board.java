@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.board;
 
-import br.game.reuse.lesse.house.House;
+import br.game.reuse.lese.house.House;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +40,7 @@ public class Board {
     
     public int addHouse(House house) {
         this.houses.add(house);
-        return this.houses.size();
+        return this.houses.size() - 1;
     }
     
     public void addPlayer(String nickname, String pawnColor) {
