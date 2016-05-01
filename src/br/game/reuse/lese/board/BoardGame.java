@@ -40,7 +40,7 @@ public class BoardGame {
     public void run() {
         Player winner = null;
         
-        while(true) {
+        while(winner == null) {
             for (Player p : this.board.getPlayers()) {
                House playerHouse = this.board.getPlayerHouse(p);
                playerHouse.execute(p);
@@ -51,7 +51,12 @@ public class BoardGame {
                }
             }
         }
-        //System.out.println("Player " + winner.getNickname() + " won!!!");
+
     }
     
+    
+        if(winner != null) {
+            System.out.println("Player " + winner.getNickname() + " won!!!");
+        }
+    }    
 }
