@@ -6,6 +6,7 @@
 package br.game.reuse.lese.presenters.interfaces;
 
 import br.game.reuse.lese.board.Player;
+import java.io.IOException;
 
 /**
  *
@@ -16,7 +17,7 @@ public interface BoardPresenter {
     /**
      * Shows LeSe's start screen to the user.
      */
-    void showStartScreen();
+    void showStartScreen() throws IOException;
     
     /**
      * Shows LeSe's Set Up Screen to the user. 
@@ -30,7 +31,7 @@ public interface BoardPresenter {
      * Allows the user to choose how many players will play the game.
      * @return the number of players
      */
-    int getNumPlayers();
+    int getNumPlayers() throws IOException;
     
     /**
      * Displays information about the winning player.
