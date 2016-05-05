@@ -19,8 +19,10 @@ public class Lese {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        StartGameView gameLese = new StartGameView();
-        gameLese.setVisible(true);
+        
+        
+//        StartGameView gameLese = new StartGameView();
+//        gameLese.setVisible(true);
         
     }
     
