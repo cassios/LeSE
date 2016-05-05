@@ -21,6 +21,7 @@ public class BoardBuilder {
     
     public void buildBoard() {
         this.board = Board.getInstance();
+        buildHouses();
     }
     
     public void buildHouses() {
