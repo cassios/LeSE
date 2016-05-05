@@ -5,8 +5,6 @@
  */
 package br.game.reuse.lese.main;
 
-import br.game.reuse.lese.board.BoardBuilder;
-
 /**
  *
  * @author bruno
@@ -19,8 +17,9 @@ public class Lese {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        BoardBuilder boarderBuilder = new BoardBuilder();
-        boarderBuilder.buildBoard();
+        StartGame game = new StartGame();
+        
+        
         
 //        StartGameView gameLese = new StartGameView();
 //        gameLese.setVisible(true);
