@@ -5,6 +5,7 @@
  */
 package br.game.reuse.lese.question;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -20,6 +21,7 @@ public class Question {
     public Question(String description, String explanation) {
         this.description = description;
         this.explanation = explanation;
+        this.choices = new HashSet<>();
     }
     
     public String getDescription() {
