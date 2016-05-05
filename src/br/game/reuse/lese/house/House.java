@@ -39,8 +39,6 @@ public abstract class House {
     public DevelopmentPhase getDevPhase() {
         return this.devPhase;
     }
-    
-    public abstract void showContent(Player p);
         
     //Design Pattern: Template Method
     public final void execute(Player p) {
