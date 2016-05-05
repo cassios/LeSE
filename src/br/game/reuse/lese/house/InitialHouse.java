@@ -28,7 +28,6 @@ public class InitialHouse extends House {
     @Override
     protected void presentContent() {
         System.out.println(this.message);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -38,6 +37,9 @@ public class InitialHouse extends House {
 
     @Override
     protected void applyOutcome(Player p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int earnedPoints = p.getPawnPosition().getOutcome().getPoints();
+        int nHouses = p.getPawnPosition().getOutcome().getNumberOfHouses();
+        p.creditPoints(earnedPoints);
+        p.move(nHouses);
     }
 }
