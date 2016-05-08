@@ -22,6 +22,7 @@ public class Board {
     
     private Board() {
         this.houses = new ArrayList<>();
+        this.players = new HashMap<>();
     }
     
     public static Board getInstance() {
