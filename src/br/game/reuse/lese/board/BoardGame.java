@@ -34,6 +34,13 @@ public class BoardGame {
         }
     }
     
+    public void init(){
+        creatBoard(new BoardBuilder());
+        this.board = Board.getInstance();
+        setUpGame();
+        run();
+    }
+    
     public void run() {
         Player winner = null;
         
