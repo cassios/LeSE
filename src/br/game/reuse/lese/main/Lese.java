@@ -5,6 +5,8 @@
  */
 package br.game.reuse.lese.main;
 
+import br.game.reuse.lese.board.BoardGame;
+
 /**
  *
  * @author bruno
@@ -17,8 +19,8 @@ public class Lese {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        StartGame game = new StartGame();
-        
+        BoardGame game = new BoardGame();
+        game.init();
         
         
 //        StartGameView gameLese = new StartGameView();
