@@ -8,7 +8,6 @@ package br.game.reuse.lese.board;
 import br.game.reuse.lese.house.House;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map.Entry;
 
 /**
@@ -19,6 +18,7 @@ public class Board {
     private static Board instance;
     private ArrayList<House> houses;
     private HashMap<Player, Integer> players;
+    public static final int CYCLE = 2;
     
     private Board() {
         this.houses = new ArrayList<>();
