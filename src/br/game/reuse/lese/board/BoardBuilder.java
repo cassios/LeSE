@@ -5,10 +5,12 @@
  */
 package br.game.reuse.lese.board;
 
+import br.game.reuse.lese.house.FinalHouse;
 import br.game.reuse.lese.outcome.BonusOutcome;
 import br.game.reuse.lese.outcome.HouseOutcome;
 import br.game.reuse.lese.house.House;
 import br.game.reuse.lese.house.InitialHouse;
+import br.game.reuse.lese.house.IntermediateHouse;
 import br.game.reuse.lese.house.QuestionHouse;
 import br.game.reuse.lese.house.JokerHouse;
 import br.game.reuse.lese.question.*;
@@ -29,37 +31,77 @@ public class BoardBuilder {
 
         int nHousesPerPhase = 6;
         int idHouse = 0;
-        for (DevelopmentPhase phase : DevelopmentPhase.values()) {
-            for (int i = 1; i <= nHousesPerPhase; i++) {
-                if (idHouse == 0) {
-                    String message = "Parabéns! \nVocê acaba de ser contratado pela empresa XYZ para trabalhar como engenheiro de software. "
-                    + "Prepare-se, muitos desafios estão por vir. Novos conhecimentos serão obtidos e muitos obstáculos serão encontrados. "
-                    + "Mas fique tranquilo. No final tudo isso valerá apenas.\n\n"
-                    + "Você acaba de ganhar 10 pontos pela sua contratação.";
-
-                    HouseOutcome outcome = new BonusOutcome(1, 10, (float) 0.0);
-                    House initHouse = new InitialHouse(idHouse, outcome, null, message);
-                    this.board.addHouse(initHouse);
-                } else {
-                    if (i % 2 != 0) {
-                        Question q = new Question("desc", "explanation");
-                        q.addChoice("42", true);
-                        for (int j = 0; j < 3; j++) {
-                            q.addChoice(Integer.toString(j), false);
-                        }
-
-                        HouseOutcome outcome = new BonusOutcome(2, 5, (float) 1.0);
-                        House questionHouse = new QuestionHouse(1, outcome, phase, q);
-                        this.board.addHouse(questionHouse);
+        for (int cycle = 1; cycle <= Board.CYCLE; cycle++) {
+            for (DevelopmentPhase phase : DevelopmentPhase.values()) {
+                for (int i = 1; i <= nHousesPerPhase; i++) {
+                    if (idHouse == 0) {
+                        buildInitialHouse(idHouse);
                     } else {
-                        HouseOutcome outcome = new BonusOutcome(2, 3, (float) 1.0);
-                        House jokerHouse = new JokerHouse(1, outcome, phase, "desc");
-                        this.board.addHouse(jokerHouse);
+                        if (cycle == Board.CYCLE && idHouse == (cycle * nHousesPerPhase * DevelopmentPhase.values().length) - 1) {
+                            buildFinalHouse(idHouse);
+                        } else {
+                            if (cycle < Board.CYCLE && (idHouse == (cycle * nHousesPerPhase * DevelopmentPhase.values().length) - 1)) {
+                                buildIntermediateHouse(idHouse, cycle);
+                            } else {
+                                if (i % 3 != 0) {
+                                    buildQuestionHouse(phase, idHouse);
+                                } else {
+                                    buildJokerHouse(phase, idHouse);
+                                }
+                            }
+                        }
                     }
+                    idHouse++;
                 }
-                idHouse++;
             }
         }
+    }
+
+    public void buildInitialHouse(int idHouse) {
+        String message = "Parabéns! \nVocê acaba de ser contratado pela empresa XYZ para trabalhar como engenheiro de software. "
+                + "Prepare-se, muitos desafios estão por vir. Novos conhecimentos serão obtidos e muitos obstáculos serão encontrados. "
+                + "Mas fique tranquilo. No final tudo isso valerá apenas.\n\n"
+                + "Você acaba de ganhar 10 pontos pela sua contratação.";
+
+        HouseOutcome outcome = new BonusOutcome(1, 10, (float) 0.0);
+        House initHouse = new InitialHouse(idHouse, outcome, null, message);
+        this.board.addHouse(initHouse);
+    }
+
+    public void buildIntermediateHouse(int idHouse, int cycle) {
+        String message = "Parabéns! \nVocê acaba de finalizar o ciclo "+cycle+" de desenvolvimento do software.\n\n"
+                + "Prepare-se, agora para o inicio do ciclo "+ (cycle+1) + ".";
+
+        HouseOutcome outcome = new BonusOutcome(2, 0, (float) 0.0);
+        House intermediateHouse = new IntermediateHouse(idHouse, outcome, null, message);
+        this.board.addHouse(intermediateHouse);
+    }
+
+    public void buildFinalHouse(int idHouse) {
+        String message = "Parabéns! \nVocê acaba completou todos os ciclos de desenvolvimento do software.\n\n"
+                + "Fim do jogo.";
+
+        HouseOutcome outcome = new BonusOutcome(0, 0, (float) 0.0);
+        House finalHouse = new FinalHouse(idHouse, outcome, null, message);
+        this.board.addHouse(finalHouse);
+    }
+
+    public void buildQuestionHouse(DevelopmentPhase phase, int idHouse) {
+        Question q = new Question("desc", "explanation");
+        q.addChoice("42", true);
+        for (int j = 0; j < 3; j++) {
+            q.addChoice(Integer.toString(j), false);
+        }
+
+        HouseOutcome outcome = new BonusOutcome(2, 5, (float) 1.0);
+        House questionHouse = new QuestionHouse(idHouse, outcome, phase, q);
+        this.board.addHouse(questionHouse);
+    }
+
+    public void buildJokerHouse(DevelopmentPhase phase, int idHouse) {
+        HouseOutcome outcome = new BonusOutcome(2, 3, (float) 1.0);
+        House jokerHouse = new JokerHouse(idHouse, outcome, phase, "desc");
+        this.board.addHouse(jokerHouse);
     }
 
 }
