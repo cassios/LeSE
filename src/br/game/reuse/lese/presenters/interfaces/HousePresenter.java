@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.presenters.interfaces;
 
-import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.board.PlayerBoard;
 
 /**
  *
@@ -16,6 +16,7 @@ public interface HousePresenter {
     /**
      * Displays information about the house when player arrives in it.
      * Example: Current Phase, Type of House, House Position, etc
+     * @param p
      */
-    void showHouseInfo();
+    void showHouseInfo(PlayerBoard p);
 }
