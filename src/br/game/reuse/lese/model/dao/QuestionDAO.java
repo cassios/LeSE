@@ -24,13 +24,12 @@ public class QuestionDAO {
         PreparedStatement ps = null;
         try {
             connection = DBConnection.getConnection();
-            ps = connection.prepareStatement("INSERT INTO question(phase, project, cycle, text, explication, score) VALUES(?, ?, ?, ?, ?, ?)");
-            ps.setInt(1, question.getPhase().getCode());
-            ps.setInt(2, question.getProject().getCode());
-            ps.setInt(3, question.getCycle());
-            ps.setString(4, question.getText());
-            ps.setString(5, question.getExplication());
-            ps.setInt(6, question.getScore());
+            ps = connection.prepareStatement("INSERT INTO question(phase, description, explanation, score, house) VALUES(?, ?, ?, ?, ?)");
+            ps.setInt(1, question.getPhase().getIdPhase());
+            ps.setString(2, question.getDescription());
+            ps.setString(3, question.getExplanation());
+            ps.setInt(4, question.getScore());
+            ps.setInt(5, question.getHouse());
             return ps.executeUpdate();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
