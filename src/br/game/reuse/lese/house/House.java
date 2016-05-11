@@ -8,6 +8,7 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 
 /**
  *

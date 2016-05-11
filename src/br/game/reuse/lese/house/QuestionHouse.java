@@ -8,8 +8,11 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleQuestionPresenter;
+import br.game.reuse.lese.presenters.interfaces.HousePresenter;
+import br.game.reuse.lese.presenters.interfaces.QuestionPresenter;
 import br.game.reuse.lese.question.QuestionBoard;
-import java.util.Scanner;
 
 /**
  *
@@ -36,40 +39,28 @@ public class QuestionHouse extends House {
 
     @Override
     protected void presentContent() {
-        System.out.println(this.question.getDescription());
-        int option = 1;
-        for (String choice : this.question.getChoices()) {
-            System.out.println(option + " - " + choice);
-            option++;
-        }
+
     }
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
-        int option = 0;
-        while (option < 1 || option > 4) {
-            System.out.println("Digite a opção que você acha correta: ");
-            Scanner scanner = new Scanner(System.in);
-            option = scanner.nextInt();
-            if (option >= 1 && option <= 4) {
-                Object choices[] = this.question.getChoices().toArray();
-                this.correct = this.question.verifyAnswer(String.valueOf(choices[option - 1]));
-            }else{
-                System.out.println("Opção não existente. Digite a opção de 1 a 4 para responder a questão!!!");
-            }
-        }
+        QuestionPresenter questionPresenter = new ConsoleQuestionPresenter();
+        questionPresenter.showQuestion(this.question);
+        questionPresenter.showChoices(this.question);
+        String answer = questionPresenter.getPlayerAnswer(this.question);
+        this.correct = this.question.verifyAnswer(answer);
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
-        System.out.println("Pontuação Atual: " + p.getCurrentScore());
+        HousePresenter housePresenter = new ConsoleHousePresenter();
+        housePresenter.showHouseInfo(p);
         this.correct = false;
     }
-    
-    public boolean isCorrect(){
+
+    public boolean isCorrect() {
         return this.correct;
     }
 }

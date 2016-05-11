@@ -8,6 +8,10 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleIntermediateHousePresenter;
+import br.game.reuse.lese.presenters.interfaces.HousePresenter;
+import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 
 /**
  *
@@ -28,21 +32,22 @@ public class IntermediateHouse extends House {
 
     @Override
     protected void presentContent() {
-        System.out.println(this.message);
+//        System.out.println(this.message);
     }
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessagePresenter intermediatePresenter = new ConsoleIntermediateHousePresenter();
+        intermediatePresenter.showContent(this);
+        intermediatePresenter.continueGame();
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
-        System.out.println("Pontuação Atual: " + p.getCurrentScore());
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HousePresenter housePresenter = new ConsoleHousePresenter();
+        housePresenter.showHouseInfo(p);
     }
 
 }

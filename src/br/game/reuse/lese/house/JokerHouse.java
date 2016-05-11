@@ -8,8 +8,11 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleJokerHousePresenter;
+import br.game.reuse.lese.presenters.interfaces.HousePresenter;
+import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 import br.game.reuse.lese.question.JokerBoard;
-import java.util.Scanner;
 
 /**
  *
@@ -33,24 +36,22 @@ public class JokerHouse extends House {
 
     @Override
     protected void presentContent() {
-        System.out.println(this.joker.getDescription());
+        
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite 0 para continuar.");
-        int option = scanner.nextInt();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MessagePresenter jokerPresenter = new ConsoleJokerHousePresenter();
+        jokerPresenter.showContent(this);
+        jokerPresenter.continueGame();
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
-        System.out.println("Pontuação Atual: " + p.getCurrentScore());
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HousePresenter housePresenter = new ConsoleHousePresenter();
+        housePresenter.showHouseInfo(p);
     }
 }
