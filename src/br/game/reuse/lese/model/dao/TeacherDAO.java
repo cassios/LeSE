@@ -26,7 +26,7 @@ public class TeacherDAO {
             connection = DBConnection.getConnection();
             ps = connection.prepareStatement("INSERT INTO teacher(cpf, user, institution, email, password) VALUES(?, ?, ?, ?, ?)");
             ps.setString(1, teacher.getCpf());
-            ps.setInt(2, teacher.getCode());
+            ps.setInt(2, teacher.getIdUser());
             ps.setString(3, teacher.getInstitution());
             ps.setString(4, teacher.getEmail());
             ps.setString(5, teacher.getPassword());
