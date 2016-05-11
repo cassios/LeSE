@@ -11,12 +11,10 @@ package br.game.reuse.lese.model;
  */
 public class Joker {
     
-    private int code = 0;
-    private Phase phase = null;
-    private Projects project = null;
-    private int cycle = 0;
+    private int idJoker = 0;
+    private Phase phase = new Phase();
     private String title = "";
-    private String text = "";
+    private String description = "";
     private String action = "";
     private int score = 0;
     private int house = 0;
@@ -25,59 +23,31 @@ public class Joker {
         //constructor empty.
     }
 
-    public Joker(Phase newPhase, Projects newProject, int newCycle, String newTitle, String newText, String newAction, int newScore, int newHouse) {
+    public Joker(String newTitle, Phase newPhase, String newDescription, String newAction, int newScore, int newHouse) {
         this.phase = newPhase;
-        this.project = newProject;
-        this.cycle = newCycle;
         this.title = newTitle;
-        this.text = newText;
+        this.description = newDescription;
         this.action = newAction;
         this.score = newScore;
         this.house = newHouse;
     }
 
-    public Joker(int newCode, Phase newPhase, Projects newProject, int newCycle, String newTitle, String newText, String newAction, int newScore, int newHouse) {
-        this.code = newCode;
+    public Joker(int newIdJoker, Phase newPhase, String newTitle, String newDescription, String newAction, int newScore, int newHouse) {
+        this.idJoker = newIdJoker;
         this.phase = newPhase;
-        this.project = newProject;
-        this.cycle = newCycle;
         this.title = newTitle;
-        this.text = newText;
+        this.description = newDescription;
         this.action = newAction;
         this.score = newScore;
         this.house = newHouse;
     }
 
     public int getCode() {
-        return code;
+        return idJoker;
     }
 
-    public void setCode(int newCode) {
-        this.code = newCode;
-    }
-
-    public Phase getPhase() {
-        return phase;
-    }
-
-    public void setPhase(Phase newPhase) {
-        this.phase = newPhase;
-    }
-
-    public Projects getProject() {
-        return project;
-    }
-
-    public void setProject(Projects newProject) {
-        this.project = newProject;
-    }
-
-    public int getCycle() {
-        return cycle;
-    }
-
-    public void setCycle(int newCycle) {
-        this.cycle = newCycle;
+    public void setCode(int newIdJoker) {
+        this.idJoker = newIdJoker;
     }
 
     public String getTitle() {
@@ -88,12 +58,12 @@ public class Joker {
         this.title = newTitle;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String newText) {
-        this.text = newText;
+    public void setDescription(String newDescription) {
+        this.description = newDescription;
     }
 
     public String getAction() {
