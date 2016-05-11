@@ -10,37 +10,36 @@ package br.game.reuse.lese.model;
  * @author bruno
  */
 public class Phase {
-    
-    private int code = 0;
+    private int idPhase = 0;
     private String name = "";
-
-    public Phase() {
-        //constructor empty.
+    
+    public Phase(){
+        
     }
-
-    public Phase(String newName) {
+    
+    public Phase(String newName){
         this.name = newName;
     }
-
-    public Phase(int newCode, String newName) {
-        this.code = newCode;
+    
+    public Phase(int newIdPhase, String newName){
+        this.idPhase = newIdPhase;
         this.name = newName;
     }
-
-    public int getCode() {
-        return code;
+    
+    public void setIdPhase(int newIdPhase){
+        this.idPhase = newIdPhase;
     }
-
-    public void setCode(int newCode) {
-        this.code = newCode;
+    
+    public int getIdPhase(){
+        return this.idPhase;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String newName) {
+    
+    public void setName(String newName){
         this.name = newName;
+    }
+    
+    public String getName(){
+        return this.name;
     }
     
 }
