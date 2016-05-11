@@ -6,7 +6,7 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
 
 /**
@@ -17,11 +17,13 @@ public abstract class House {
     private final int id;
     private HouseOutcome outcome;
     private final DevelopmentPhase devPhase;
+    private int cycle;
     
-    public House(int id, HouseOutcome outcome, DevelopmentPhase phase) {
+    public House(int id, HouseOutcome outcome, DevelopmentPhase phase, int cycle) {
         this.id = id;
         this.outcome = outcome;
         this.devPhase = phase;
+        this.cycle = cycle;
     }
     
     public int getId() {
@@ -39,15 +41,19 @@ public abstract class House {
     public DevelopmentPhase getDevPhase() {
         return this.devPhase;
     }
+    
+    public int getCycle() {
+        return this.cycle;
+    }
         
     //Design Pattern: Template Method
-    public final void execute(Player p) {
+    public final void execute(PlayerBoard p) {
         presentContent();
         interactWithPlayer(p);
         applyOutcome(p);
     }
     
     protected abstract void presentContent();
-    protected abstract void interactWithPlayer(Player p);
-    protected abstract void applyOutcome(Player p);
+    protected abstract void interactWithPlayer(PlayerBoard p);
+    protected abstract void applyOutcome(PlayerBoard p);
 }
