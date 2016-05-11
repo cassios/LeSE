@@ -6,22 +6,23 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
 
 /**
  *
  * @author bruno
  */
-public class IntermediateHouse extends House{
+public class IntermediateHouse extends House {
+
     private final String message;
-    
-    public IntermediateHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
-        super(id, outcome, phase);
+
+    public IntermediateHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg, int cycle) {
+        super(id, outcome, phase, cycle);
         this.message = msg;
     }
-    
-    public String getMessage(){
+
+    public String getMessage() {
         return this.message;
     }
 
@@ -31,13 +32,17 @@ public class IntermediateHouse extends House{
     }
 
     @Override
-    protected void interactWithPlayer(Player p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void interactWithPlayer(PlayerBoard p) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void applyOutcome(Player p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void applyOutcome(PlayerBoard p) {
+        HouseOutcome outcome = getOutcome();
+        outcome.apply(p, this);
+        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+        System.out.println("Pontuação Atual: " + p.getCurrentScore());
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
