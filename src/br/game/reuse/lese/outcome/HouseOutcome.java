@@ -5,6 +5,9 @@
  */
 package br.game.reuse.lese.outcome;
 
+import br.game.reuse.lese.board.PlayerBoard;
+import br.game.reuse.lese.house.House;
+
 /**
  *
  * @author cass
@@ -34,5 +37,5 @@ public abstract class HouseOutcome {
         return this.nHouses;
     }
     
-    public abstract void apply();
+    public abstract void apply(PlayerBoard p, House house);
 }
