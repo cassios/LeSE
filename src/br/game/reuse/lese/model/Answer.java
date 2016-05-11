@@ -11,34 +11,34 @@ package br.game.reuse.lese.model;
  */
 public class Answer {
     
-    private int code = 0;
+    private int idAnswer = 0;
     private Question question = null;
-    private String text = "";
+    private String description = "";
     private String status = "";
 
     public Answer() {
         //constructor empty.
     }
 
-    public Answer(Question newQuestion, String newText, String newStatus) {
+    public Answer(Question newQuestion, String newDescription, String newStatus) {
         this.question = newQuestion;
-        this.text = newText;
+        this.description = newDescription;
         this.status = newStatus;
     }
 
-    public Answer(int newCode, Question newQuestion, String newText, String newStatus) {
-        this.code = newCode;
+    public Answer(int newIdAnswer, Question newQuestion, String newDescription, String newStatus) {
+        this.idAnswer = newIdAnswer;
         this.question = newQuestion;
-        this.text = newText;
+        this.description = newDescription;
         this.status = newStatus;
     }
 
     public int getCode() {
-        return code;
+        return idAnswer;
     }
 
-    public void setCode(int newCode) {
-        this.code = newCode;
+    public void setCode(int newIdAnswer) {
+        this.idAnswer = newIdAnswer;
     }
 
     public Question getQuestion() {
@@ -49,12 +49,12 @@ public class Answer {
         this.question = newQuestion;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String newText) {
-        this.text = newText;
+    public void setDescription(String newDescription) {
+        this.description = newDescription;
     }
 
     public String getStatus() {
