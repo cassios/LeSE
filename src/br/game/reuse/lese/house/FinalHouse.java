@@ -6,7 +6,7 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
 
 /**
@@ -16,8 +16,8 @@ import br.game.reuse.lese.outcome.HouseOutcome;
 public class FinalHouse extends House {
     private final String message;
     
-    public FinalHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
-        super(id, outcome, phase);
+    public FinalHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg, int cycle) {
+        super(id, outcome, phase, cycle);
         this.message = msg;
     }
     
@@ -28,16 +28,20 @@ public class FinalHouse extends House {
     @Override
     protected void presentContent() {
         System.out.println(this.message);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void interactWithPlayer(Player p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void interactWithPlayer(PlayerBoard p) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void applyOutcome(Player p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void applyOutcome(PlayerBoard p) {
+        HouseOutcome outcome = getOutcome();
+        outcome.apply(p, this);
+        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+        System.out.println("Pontuação Atual: " + p.getCurrentScore());
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
