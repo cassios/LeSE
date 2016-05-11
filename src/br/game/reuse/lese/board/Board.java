@@ -6,6 +6,7 @@
 package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.question.ProjectBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -17,8 +18,8 @@ import java.util.Map.Entry;
 public class Board {
     private static Board instance;
     private ArrayList<House> houses;
-    private HashMap<Player, Integer> players;
-    public static final int CYCLE = 2;
+    private HashMap<PlayerBoard, PlayerBoard> players;
+    private ProjectBoard project;
     
     private Board() {
         this.houses = new ArrayList<>();
@@ -45,35 +46,35 @@ public class Board {
     }
     
     public void addPlayer(String nickname, String pawnColor) {
-        Player newPlayer = new Player(nickname);
-        this.players.put(newPlayer, 0);
+        PlayerBoard newPlayer = new PlayerBoard(nickname);
+        this.players.put(newPlayer, newPlayer);
     }
     
-    public ArrayList<Player> getPlayers() {
-        ArrayList<Player> playersArray = new ArrayList<>();
-        for (Entry<Player, Integer> item : this.players.entrySet()) {
+    public ArrayList<PlayerBoard> getPlayers() {
+        ArrayList<PlayerBoard> playersArray = new ArrayList<>();
+        for (Entry<PlayerBoard, PlayerBoard> item : this.players.entrySet()) {
             playersArray.add(item.getKey());
         }
         return playersArray;
     }
     
-    private int getPlayerHouseId(Player p) {
-        return this.players.get(p);
+    private int getPlayerHouseId(PlayerBoard p) {
+        return this.players.get(p).getCurrentPos();
     }
         
-    public House getPlayerHouse(Player p) {
+    public House getPlayerHouse(PlayerBoard p) {
         return getHouseAtIndex(getPlayerHouseId(p));
     }
     
-    public int updatePlayerPosition(Player p, int nHouses) {
-        int currentPos = getPlayerHouseId(p);
-        int newPos = currentPos + nHouses;
-        return this.players.put(p, newPos);
-    }
+//    public int updatePlayerPosition(PlayerBoard p, int nHouses) {
+//        int currentPos = getPlayerHouseId(p);
+//        int newPos = currentPos + nHouses;
+//        return this.players.put(p, newPos);
+//    }
     
     public boolean hasWinner() {
         int finalHouseId = this.houses.size() - 1;
-        for (Player p : getPlayers()) {
+        for (PlayerBoard p : getPlayers()) {
             if(getPlayerHouseId(p) == finalHouseId) {
                 return true;
             }
@@ -81,15 +82,23 @@ public class Board {
         return false;
     }
     
-    public Player getWinner() {
+    public PlayerBoard getWinner() {
         if(hasWinner()) {
             int finalHouseId = this.houses.size() - 1;
-            for (Player p : getPlayers()) {
+            for (PlayerBoard p : getPlayers()) {
                 if(getPlayerHouseId(p) == finalHouseId) {
                     return p;
                 }
             }
         }
         return null;
+    }
+    
+    public void createProjectBoard(String name, String description, int cycle){
+        this.project = new ProjectBoard(name, description, cycle);
+    }
+    
+    public ProjectBoard getProjectBoard(){
+        return this.project;
     }
 }
