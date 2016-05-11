@@ -5,19 +5,43 @@
  */
 package br.game.reuse.lese.outcome;
 
+import br.game.reuse.lese.board.PlayerBoard;
+import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.house.JokerHouse;
+import br.game.reuse.lese.question.JokerBoard;
+
 /**
  *
  * @author cass
  */
 public class PenalityOutcome extends HouseOutcome {
-    
+
     public PenalityOutcome(int nHouses, int points) {
         super(points, nHouses, 1);
     }
-    
+
     @Override
-    public void apply() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void apply(PlayerBoard p, House house) {
+        HouseOutcome outcome = house.getOutcome();
+        JokerHouse joker = (JokerHouse) house;
+        if (outcome instanceof BonusOutcome) {
+            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
+                    + "\nVocê ganhou " + getPoints() + ". Avance " + getNumberOfHouses() + " casa(s).");
+            p.creditPoints(getPoints());
+            p.move(getNumberOfHouses());
+        } else {
+//            PenalityOutcome penality = (PenalityOutcome) outcome;
+//            if ((p.getPawnPosition().getId() - getNumberOfHouses()) < 1) {
+//                System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
+//                        + "\nVocê perdeu " + getPoints() + ".");
+//                p.debitPoints(getPoints());
+//            } else {
+            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
+                    + "\nVocê perdeu " + getPoints() + ". Recue " + getNumberOfHouses() + " casa(s).");
+            p.debitPoints(getPoints());
+            p.move(-getNumberOfHouses());
+//            }
+        }
     }
-    
+
 }
