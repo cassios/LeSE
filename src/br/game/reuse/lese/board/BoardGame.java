@@ -19,6 +19,7 @@ public class BoardGame {
     public void creatBoard(BoardBuilder builder) {
         
         builder.buildBoard();
+        builder.buildProject();
         builder.buildHouses();
     }
     
@@ -42,10 +43,10 @@ public class BoardGame {
     }
     
     public void run() {
-        Player winner = null;
+        PlayerBoard winner = null;
         
         while(winner == null) {
-            for (Player p : this.board.getPlayers()) {
+            for (PlayerBoard p : this.board.getPlayers()) {
                House playerHouse = this.board.getPlayerHouse(p);
                playerHouse.execute(p);
                
