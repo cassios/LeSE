@@ -6,39 +6,51 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.question.JokerBoard;
+import java.util.Scanner;
 
 /**
  *
  * @author cass
  */
 public class JokerHouse extends House {
-    private final String description;
+    private JokerBoard joker;
     
-    public JokerHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String description) {
-        super(id, outcome, phase);
-        this.description = description;
+    public JokerHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, JokerBoard j, int cycle) {
+        super(id, outcome, phase, cycle);
+        this.joker = j;
     }
     
-    public String getDescription() {
-        return this.description;
+    public JokerBoard getJoker() {
+        return this.joker;
+    }
+    
+    public void setJoker(JokerBoard j) {
+        this.joker = j;
     }
 
     @Override
     protected void presentContent() {
-        System.out.println(this.description);
+        System.out.println(this.joker.getDescription());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void interactWithPlayer(Player p) {
+    protected void interactWithPlayer(PlayerBoard p) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite 0 para continuar.");
+        int option = scanner.nextInt();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void applyOutcome(Player p) {
-        
+    protected void applyOutcome(PlayerBoard p) {
+        HouseOutcome outcome = getOutcome();
+        outcome.apply(p, this);
+        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+        System.out.println("Pontuação Atual: " + p.getCurrentScore());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
