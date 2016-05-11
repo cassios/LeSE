@@ -24,9 +24,9 @@ public class AswerDAO {
         PreparedStatement ps = null;
         try {
             connection = DBConnection.getConnection();
-            ps = connection.prepareStatement("INSERT INTO aswer(question, text, status) VALUES(?, ?, ?)");
+            ps = connection.prepareStatement("INSERT INTO aswer(question, description, status) VALUES(?, ?, ?)");
             ps.setInt(1, answer.getQuestion().getCode());
-            ps.setString(2, answer.getText());
+            ps.setString(2, answer.getDescription());
             ps.setString(3, answer.getStatus());
             return ps.executeUpdate();
         } catch (ClassNotFoundException ex) {
