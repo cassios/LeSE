@@ -79,4 +79,12 @@ public class Question {
         this.house = newHouse;
     }
     
+    public void setPhase(Phase newPhase){
+        this.phase = newPhase;
+    }
+    
+    public Phase getPhase(){
+        return this.phase;
+    }
+    
 }
