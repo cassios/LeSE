@@ -24,15 +24,13 @@ public class JokerDAO {
         PreparedStatement ps = null;
         try {
             connection = DBConnection.getConnection();
-            ps = connection.prepareStatement("INSERT INTO joker(phase, project, cycle, title, text, action, score, house) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-            ps.setInt(1, joker.getPhase().getCode());
-            ps.setInt(2, joker.getProject().getCode());
-            ps.setInt(3, joker.getCycle());
-            ps.setString(4, joker.getTitle());
-            ps.setString(5, joker.getText());
-            ps.setString(6, joker.getAction());
-            ps.setInt(7, joker.getScore());
-            ps.setInt(8, joker.getHouse());
+            ps = connection.prepareStatement("INSERT INTO joker(phase, title, description, action, score, house) VALUES(?, ?, ?, ?, ?, ?)");
+            ps.setInt(1, joker.getPhase().getIdPhase());
+            ps.setString(2, joker.getTitle());
+            ps.setString(3, joker.getDescription());
+            ps.setString(4, joker.getAction());
+            ps.setInt(5, joker.getScore());
+            ps.setInt(6, joker.getHouse());
             return ps.executeUpdate();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
