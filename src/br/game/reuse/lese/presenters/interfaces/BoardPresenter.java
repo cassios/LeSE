@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.presenters.interfaces;
 
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 
 /**
  *
@@ -36,5 +36,5 @@ public interface BoardPresenter {
      * Displays information about the winning player.
      * @param player a player object
      */
-    void showWinner(Player player);
+    void showWinner(PlayerBoard player);
 }
