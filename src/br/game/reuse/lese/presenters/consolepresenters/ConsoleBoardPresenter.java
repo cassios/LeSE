@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.presenters.consolepresenters;
 
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
 
 /**
@@ -30,7 +30,7 @@ public class ConsoleBoardPresenter implements BoardPresenter {
     }
 
     @Override
-    public void showWinner(Player player) {
+    public void showWinner(PlayerBoard player) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
