@@ -6,7 +6,7 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
 
 /**
@@ -16,8 +16,8 @@ import br.game.reuse.lese.outcome.HouseOutcome;
 public class InitialHouse extends House {
     private final String message;
     
-    public InitialHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg) {
-        super(id, outcome, phase);
+    public InitialHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg, int cycle) {
+        super(id, outcome, phase, cycle);
         this.message = msg;
     }
     
@@ -31,15 +31,15 @@ public class InitialHouse extends House {
     }
 
     @Override
-    protected void interactWithPlayer(Player p) {
+    protected void interactWithPlayer(PlayerBoard p) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected void applyOutcome(Player p) {
-        int earnedPoints = p.getPawnPosition().getOutcome().getPoints();
-        int nHouses = p.getPawnPosition().getOutcome().getNumberOfHouses();
-        p.creditPoints(earnedPoints);
-        p.move(nHouses);
+    protected void applyOutcome(PlayerBoard p) {
+        HouseOutcome outcome = getOutcome();
+        outcome.apply(p, this);
+        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+        System.out.println("Pontuação Atual: " + p.getCurrentScore());
     }
 }
