@@ -13,14 +13,16 @@ public interface PlayerPresenter {
     
     /**
      *
+     * @return 
      */
-    void showPlayerSetUp();
+    int showPlayerSetUp();
     
     /**
      *
+     * @param i
      * @return
      */
-    String getPlayerName();
+    String getPlayerName(int i);
     
     /**
      *
