@@ -6,7 +6,10 @@
 package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
-import java.util.Scanner;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsolePlayerPresenter;
+import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.PlayerPresenter;
 
 /**
  *
@@ -24,13 +27,10 @@ public class BoardGame {
     }
     
     public void setUpGame() {
-        Scanner sc=new Scanner(System.in);
-        System.out.println("How many players?:");
-        int nPlayers = sc.nextInt();
-        
+        PlayerPresenter playerPresenter = new ConsolePlayerPresenter();
+        int nPlayers = playerPresenter.showPlayerSetUp();        
         for (int i = 1; i <= nPlayers; i++) {
-            System.out.println("Enter player " + i + " nickname." );
-            String playerName = sc.next();
+            String playerName = playerPresenter.getPlayerName(i);
             this.board.addPlayer(playerName, "red");
         }
     }
@@ -58,7 +58,8 @@ public class BoardGame {
         }
         
         if(winner != null) {
-            System.out.println("Player " + winner.getNickname() + " won!!!");
+            BoardPresenter boarPresenter = new ConsoleBoardPresenter();
+            boarPresenter.showWinner(winner);
         }
     }    
 }
