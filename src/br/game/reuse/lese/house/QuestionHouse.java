@@ -6,9 +6,9 @@
 package br.game.reuse.lese.house;
 
 import br.game.reuse.lese.board.DevelopmentPhase;
-import br.game.reuse.lese.board.Player;
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
-import br.game.reuse.lese.question.Question;
+import br.game.reuse.lese.question.QuestionBoard;
 import java.util.Scanner;
 
 /**
@@ -17,20 +17,20 @@ import java.util.Scanner;
  */
 public class QuestionHouse extends House {
 
-    private Question question;
-    private boolean isCorrect;
+    private QuestionBoard question;
+    private boolean correct;
 
-    public QuestionHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, Question q) {
-        super(id, outcome, phase);
+    public QuestionHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, QuestionBoard q, int cycle) {
+        super(id, outcome, phase, cycle);
         this.question = q;
-        this.isCorrect = false;
+        this.correct = false;
     }
 
-    public void setQuestion(Question q) {
+    public void setQuestion(QuestionBoard q) {
         this.question = q;
     }
 
-    public Question getQuestion() {
+    public QuestionBoard getQuestion() {
         return this.question;
     }
 
@@ -45,7 +45,7 @@ public class QuestionHouse extends House {
     }
 
     @Override
-    protected void interactWithPlayer(Player p) {
+    protected void interactWithPlayer(PlayerBoard p) {
         int option = 0;
         while (option < 1 || option > 4) {
             System.out.println("Digite a opção que você acha correta: ");
@@ -53,7 +53,7 @@ public class QuestionHouse extends House {
             option = scanner.nextInt();
             if (option >= 1 && option <= 4) {
                 Object choices[] = this.question.getChoices().toArray();
-                this.isCorrect = this.question.verifyAnswer(String.valueOf(choices[option - 1]));
+                this.correct = this.question.verifyAnswer(String.valueOf(choices[option - 1]));
             }else{
                 System.out.println("Opção não existente. Digite a opção de 1 a 4 para responder a questão!!!");
             }
@@ -61,29 +61,15 @@ public class QuestionHouse extends House {
     }
 
     @Override
-    protected void applyOutcome(Player p) {
-        int earnedPoints = p.getPawnPosition().getOutcome().getPoints();
-        int nHouses = p.getPawnPosition().getOutcome().getNumberOfHouses();
-        if (this.isCorrect) {
-            System.out.println("Parabéns, você acertou.\n" + this.question.getEplanation()
-                    + "\nVocê ganhou " + earnedPoints + ". Avance " + nHouses + " casa(s).");
-            p.creditPoints(earnedPoints);
-            p.move(nHouses);
-        } else {
-            House playerHouse = p.getPawnPosition();
-            if ((playerHouse.getId() - nHouses) < 1) {
-                System.out.println("Que pena, você errou.\n" + this.question.getEplanation()
-                        + "\nVocê perdeu " + earnedPoints + ".");
-                p.creditPoints(-earnedPoints);
-            } else {
-                System.out.println("Que pena, você errou.\n" + this.question.getEplanation()
-                        + "\nVocê perdeu " + earnedPoints + ". Recue " + nHouses + " casa(s).");
-                p.creditPoints(-earnedPoints);
-                p.move(-nHouses);
-            }
-        }
+    protected void applyOutcome(PlayerBoard p) {
+        HouseOutcome outcome = getOutcome();
+        outcome.apply(p, this);
         System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
         System.out.println("Pontuação Atual: " + p.getCurrentScore());
-        this.isCorrect = false;
+        this.correct = false;
+    }
+    
+    public boolean isCorrect(){
+        return this.correct;
     }
 }
