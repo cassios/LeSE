@@ -5,7 +5,7 @@
  */
 package br.game.reuse.lese.view;
 
-import br.game.reuse.lese.model.Student;
+import br.game.reuse.lese.model.Player;
 import br.game.reuse.lese.view.interfaces.AbstractComponent;
 
 /**
@@ -14,10 +14,10 @@ import br.game.reuse.lese.view.interfaces.AbstractComponent;
  */
 public class BoardView {
 
-    private Student student = null;
+    private Player student = null;
     
     public BoardView(String nameStudent){
-        this.student = new Student(nameStudent);
+        this.student = new Player(nameStudent);
     }
     
     /*public static void main(String[] args) {
