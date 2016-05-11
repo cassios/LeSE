@@ -11,7 +11,7 @@ package br.game.reuse.lese.model;
  */
 public class User {
     
-    private int code = 0;
+    private int idUser = 0;
     private String name = "";
 
     public User() {
@@ -22,17 +22,17 @@ public class User {
         this.name = newName;
     }
 
-    public User(int newCode, String newName) {
-        this.code = newCode;
+    public User(int newIdUser, String newName) {
+        this.idUser = newIdUser;
         this.name = newName;
     }
 
-    public int getCode() {
-        return code;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setCode(int newCode) {
-        this.code = newCode;
+    public void setIdUser(int newIdUser) {
+        this.idUser = newIdUser;
     }
 
     public String getName() {
