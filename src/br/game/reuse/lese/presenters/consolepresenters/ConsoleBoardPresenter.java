@@ -31,7 +31,7 @@ public class ConsoleBoardPresenter implements BoardPresenter {
 
     @Override
     public void showWinner(PlayerBoard player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Player " + player.getNickname() + " won!!!");
     }
     
 }

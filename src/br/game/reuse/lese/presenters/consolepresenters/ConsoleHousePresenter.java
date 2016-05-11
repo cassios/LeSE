@@ -5,6 +5,7 @@
  */
 package br.game.reuse.lese.presenters.consolepresenters;
 
+import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 
 /**
@@ -14,8 +15,9 @@ import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 public class ConsoleHousePresenter implements HousePresenter {
 
     @Override
-    public void showHouseInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void showHouseInfo(PlayerBoard p) {
+        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+        System.out.println("Pontuação Atual: " + p.getCurrentScore());
     }
     
 }
