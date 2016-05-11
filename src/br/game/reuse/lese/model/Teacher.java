@@ -28,8 +28,8 @@ public class Teacher extends User{
         this.password = newPassword;
     }
 
-    public Teacher(String newCpf, String newInstitution, String newEmail, String newPassword, int newCode, String newName) {
-        super(newCode, newName);
+    public Teacher(String newCpf, String newInstitution, String newEmail, String newPassword, int newIdUser, String newName) {
+        super(newIdUser, newName);
         this.cpf = newCpf;
         this.institution = newInstitution;
         this.email = newEmail;
