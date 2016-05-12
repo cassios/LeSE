@@ -6,6 +6,7 @@
 package br.game.reuse.lese.presenters.interfaces;
 
 import br.game.reuse.lese.question.QuestionBoard;
+import java.util.List;
 
 /**
  *
@@ -23,15 +24,16 @@ public interface QuestionPresenter {
     /**
      * Displays question choices to the player.
      * @param question
+     * @return 
      */
-    void showChoices(QuestionBoard question);
+    List<String> showChoices(QuestionBoard question);
     
     /**
      * Obtains answer from the player
-     * @param question
+     * @param choices
      * @return player answer
      */
-    String getPlayerAnswer(QuestionBoard question);
+    String getPlayerAnswer(List<String> choices);
     
     /**
      * Gives feedback to the user based on their answer.
