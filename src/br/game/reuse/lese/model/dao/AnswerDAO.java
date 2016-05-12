@@ -7,8 +7,6 @@ package br.game.reuse.lese.model.dao;
 
 import br.game.reuse.lese.connection.DBConnection;
 import br.game.reuse.lese.model.Answer;
-import br.game.reuse.lese.model.Phase;
-import br.game.reuse.lese.model.Question;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,19 +20,17 @@ import java.util.logging.Logger;
  *
  * @author bruno
  */
-public class QuestionDAO {
+public class AnswerDAO {
     
-    public static int createQuestion(Question question){
+    public static int createAnswer(Answer answer){
         Connection connection = null;
         PreparedStatement ps = null;
         try {
             connection = DBConnection.getConnection();
-            ps = connection.prepareStatement("INSERT INTO question(phase, description, explanation, score, house) VALUES(?, ?, ?, ?, ?)");
-            ps.setInt(1, question.getPhase().getIdPhase());
-            ps.setString(2, question.getDescription());
-            ps.setString(3, question.getExplanation());
-            ps.setInt(4, question.getScore());
-            ps.setInt(5, question.getHouse());
+            ps = connection.prepareStatement("INSERT INTO aswer(question, description, status) VALUES(?, ?, ?)");
+            ps.setInt(1, answer.getQuestion().getIdQueston());
+            ps.setString(2, answer.getDescription());
+            ps.setString(3, answer.getStatus());
             return ps.executeUpdate();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,26 +42,22 @@ public class QuestionDAO {
         return 0;
     }
     
-    public List<Question> selectQuestionPerPhase(Phase phase){
+    public List<Answer> selectAnswerPerIdQuestion(int idQuestion){
         Connection connection = null;
         PreparedStatement ps = null;
-        List<Question> listQuestions = new ArrayList<>();
+        List<Answer> listAnswers = new ArrayList<>();
         try {
             connection = DBConnection.getConnection();
-            ps = connection.prepareStatement("SELECT * FROM question WHERE phase=?");
-            ps.setInt(1, phase.getIdPhase());
+            ps = connection.prepareStatement("SELECT * FROM answer WHERE question=?");
+            ps.setInt(1, idQuestion);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Question question = new Question();
-                question.setIdQueston(rs.getInt("id_question"));
-                question.setPhase(phase);
-                question.setDescription(rs.getString("description"));
-                question.setExplanation(rs.getString("explanation"));
-                question.setScore(rs.getInt("score"));
-                question.setHouse(rs.getInt("house"));
-                question.setAnswer(new AnswerDAO().selectAnswerPerIdQuestion(question.getIdQueston()));
-                listQuestions.add(question);
-            }            
+                Answer answer = new Answer();
+                answer.setIdAnswer(rs.getInt("id_answer"));
+                answer.setDescription(rs.getString("description"));
+                answer.setStatus(rs.getString("status"));
+                listAnswers.add(answer);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -73,7 +65,7 @@ public class QuestionDAO {
         }finally{
             DBConnection.closeConnection(connection, ps);
         }
-        return listQuestions;
+        return listAnswers;
     }
     
 }
