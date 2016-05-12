@@ -7,6 +7,9 @@ package br.game.reuse.lese.presenters.consolepresenters;
 
 import br.game.reuse.lese.presenters.interfaces.QuestionPresenter;
 import br.game.reuse.lese.question.QuestionBoard;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,16 +24,22 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
     }
 
     @Override
-    public void showChoices(QuestionBoard question) {
+    public List<String> showChoices(QuestionBoard question) {
         int option = 1;
-        for (String choice : question.getChoices()) {
+        List<String> choices = new ArrayList<>();
+        for(String choice : question.getChoices()){
+            choices.add(choice);
+        }
+        Collections.shuffle(choices);
+        for (String choice : choices) {
             System.out.println(option + " - " + choice);
             option++;
         }
+        return choices;
     }
 
     @Override
-    public String getPlayerAnswer(QuestionBoard question) {
+    public String getPlayerAnswer(List<String> choices) {
         int option = 0;
         while (option < 1 || option > 4) {
             System.out.println("Digite a opção que você acha correta: ");
@@ -40,8 +49,7 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
                 System.out.println("Opção não existente. Digite a opção de 1 a 4 para responder a questão!!!");
             }
         }
-        Object choices[] = question.getChoices().toArray();
-        return String.valueOf(choices[1]);
+        return choices.get(option-1);
     }
 
     @Override
