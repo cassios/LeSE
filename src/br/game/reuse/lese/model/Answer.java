@@ -33,11 +33,11 @@ public class Answer {
         this.status = newStatus;
     }
 
-    public int getCode() {
+    public int getIdAnswer() {
         return idAnswer;
     }
 
-    public void setCode(int newIdAnswer) {
+    public void setIdAnswer(int newIdAnswer) {
         this.idAnswer = newIdAnswer;
     }
 

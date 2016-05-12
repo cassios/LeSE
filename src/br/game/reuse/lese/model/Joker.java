@@ -42,11 +42,11 @@ public class Joker {
         this.house = newHouse;
     }
 
-    public int getCode() {
+    public int getIdJoker() {
         return idJoker;
     }
 
-    public void setCode(int newIdJoker) {
+    public void setIdJoker(int newIdJoker) {
         this.idJoker = newIdJoker;
     }
 

@@ -5,6 +5,8 @@
  */
 package br.game.reuse.lese.model;
 
+import java.util.List;
+
 /**
  *
  * @author bruno
@@ -17,33 +19,36 @@ public class Question {
     private String explanation = "";
     private int score = 0;
     private int house = 0;
+    private List<Answer> answer = null;
 
     public Question() {
         //constructor empty.
     }
 
-    public Question(Phase newPhase, String newDescription, String newExplanation, int newScore, int newHouse) {
+    public Question(Phase newPhase, String newDescription, String newExplanation, int newScore, int newHouse, List<Answer> newAnswer) {
         this.phase = newPhase;
         this.description = newDescription;
         this.explanation = newExplanation;
         this.score = newScore;
         this.house = newHouse;
+        this.answer = newAnswer;
     }
 
-    public Question(int newIdQuestion, Phase newPhase, String newDescription, String newExplanation, int newScore, int newHouse) {
+    public Question(int newIdQuestion, Phase newPhase, String newDescription, String newExplanation, int newScore, int newHouse, List<Answer> newAnswer) {
         this.idQuestion = newIdQuestion;
         this.phase = newPhase;
         this.description = newDescription;
         this.explanation = newExplanation;
         this.score = newScore;
         this.house = newHouse;
+        this.answer = newAnswer;
     }
 
-    public int getCode() {
+    public int getIdQueston() {
         return idQuestion;
     }
 
-    public void setCode(int newIdQuestion) {
+    public void setIdQueston(int newIdQuestion) {
         this.idQuestion = newIdQuestion;
     }
 
@@ -85,6 +90,14 @@ public class Question {
     
     public Phase getPhase(){
         return this.phase;
+    }
+    
+    public void setAnswer(List<Answer> answer){
+        this.answer = answer;
+    }
+    
+    public List<Answer> getAnswer(){
+        return this.answer;
     }
     
 }
