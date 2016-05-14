@@ -23,15 +23,15 @@ public class PenalityOutcome extends HouseOutcome {
     @Override
     public void apply(PlayerBoard p, House house) {
         HouseOutcome outcome = house.getOutcome();
-//        JokerHouse joker = (JokerHouse) house;
+        JokerHouse joker = (JokerHouse) house;
         if (outcome instanceof BonusOutcome) {
-//            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
-//                    + "\nVocê ganhou " + getPoints() + ". Avance " + getNumberOfHouses() + " casa(s).");
+            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
+                    + "\nVocê ganhou " + getPoints() + " pontos. Avance " + getNumberOfHouses() + " casa(s).");
             p.creditPoints(getPoints());
             p.move(getNumberOfHouses());
         } else {
-//            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
-//                    + "\nVocê perdeu " + getPoints() + ". Recue " + getNumberOfHouses() + " casa(s).");
+            System.out.println(joker.getJoker().getTitle() + "\n" + joker.getJoker().getDescription()
+                    + "\nVocê perdeu " + getPoints() + " pontos. Recue " + getNumberOfHouses() + " casa(s).");
             p.debitPoints(getPoints());
             p.move(-getNumberOfHouses());
         }

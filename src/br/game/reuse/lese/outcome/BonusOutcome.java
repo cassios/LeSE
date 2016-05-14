@@ -32,17 +32,17 @@ public class BonusOutcome extends HouseOutcome {
             QuestionHouse question = (QuestionHouse) house;
             QuestionPresenter questionPresenter = new ConsoleQuestionPresenter();
             if (question.isCorrect()) {
-                String feedback = "Parabéns, você acertou.\n" + question.getQuestion().getEplanation()
-                        + "\nVocê ganhou " + getPoints() + ". Avance " + getNumberOfHouses() + " casa(s).";
+                String feedback = "Parabéns, você acertou!!!\n" + question.getQuestion().getEplanation()
+                        + "\nVocê ganhou " + getPoints() + " pontos. Avance " + getNumberOfHouses() + " casa(s).";
                 questionPresenter.showFeedback(feedback);
                 p.creditPoints(getPoints());
                 p.move(getNumberOfHouses());
             } else {
                 String feedback = "Que pena, você errou.\n" + question.getQuestion().getEplanation()
-                        + "\nVocê perdeu " + getPoints() + ". Recue " + getNumberOfHouses() + " casa(s).";
+                        + "\nVocê perdeu " + getPoints() + " pontos.";
                 questionPresenter.showFeedback(feedback);
                 p.debitPoints(getPoints());
-                p.move(-getNumberOfHouses());
+//                p.move(-getNumberOfHouses());
             }
         } else if (house instanceof IntermediateHouse) {
             p.creditPoints(getPoints());
