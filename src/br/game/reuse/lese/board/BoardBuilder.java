@@ -63,10 +63,9 @@ public class BoardBuilder {
     }
 
     public void buildInitialHouse(int idHouse, int cycle) {
-        String message = "Parabéns! \nVocê acaba de ser contratado pela empresa XYZ para trabalhar como engenheiro de software. "
-                + "Prepare-se, muitos desafios estão por vir. Novos conhecimentos serão obtidos e muitos obstáculos serão encontrados. "
-                + "Mas fique tranquilo. No final tudo isso valerá apenas.\n\n"
-                + "Você acaba de ganhar 10 pontos pela sua contratação.";
+        String message = "Parabéns! \nVocê acaba de ser contratado pela empresa XYZ para trabalhar como engenheiro de software.\n"
+                + "Prepare-se! Muitos desafios estão por vir! Novos conhecimentos serão obtidos e muitos obstáculos serão encontrados.\n"
+                + "Mas fique tranquilo. No final tudo isso valerá apena.\n";
 
         HouseOutcome outcome = new BonusOutcome(1, 10, (float) 0.0);
         House initHouse = new InitialHouse(idHouse, outcome, null, message, cycle);
@@ -75,7 +74,7 @@ public class BoardBuilder {
 
     public void buildIntermediateHouse(int idHouse, int cycle) {
         String message = "Parabéns! \nVocê acaba de finalizar o ciclo "+cycle+" de desenvolvimento do software.\n\n"
-                + "Prepare-se, agora para o inicio do ciclo "+ (cycle+1) + ".";
+                + "Prepare-se para o início do ciclo "+ (cycle+1) + ".";
 
         HouseOutcome outcome = new BonusOutcome(2, 0, (float) 0.0);
         House intermediateHouse = new IntermediateHouse(idHouse, outcome, null, message, cycle);
