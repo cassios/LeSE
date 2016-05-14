@@ -5,6 +5,7 @@
  */
 package br.game.reuse.lese.presenters.consolepresenters;
 
+import br.game.reuse.lese.board.Board;
 import br.game.reuse.lese.presenters.interfaces.ProjectPresenter;
 
 /**
@@ -15,7 +16,10 @@ public class ConsoleProjectPresenter implements ProjectPresenter {
 
     @Override
     public void showProjects() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Board board = Board.getInstance();
+        System.out.println(board.getProjectBoard().getName());
+        System.out.println(board.getProjectBoard().getDescription());
+        System.out.println("Quantidade de ciclos para o desenvolvimento: " + board.getProjectBoard().getCycle());
     }
 
     @Override

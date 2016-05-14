@@ -17,7 +17,7 @@ public class ConsolePlayerPresenter implements PlayerPresenter {
     @Override
     public int showPlayerSetUp() {
         Scanner sc=new Scanner(System.in);
-        System.out.println("How many players?:");
+        System.out.println("Quantos jogadores?:");
         int nPlayers = sc.nextInt();
         return nPlayers;
     }
@@ -25,7 +25,7 @@ public class ConsolePlayerPresenter implements PlayerPresenter {
     @Override
     public String getPlayerName(int i) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter player " + i + " nickname.");
+        System.out.println("Jogador " + i + " nome.");
         String playerName = sc.next();
         return playerName;
     }

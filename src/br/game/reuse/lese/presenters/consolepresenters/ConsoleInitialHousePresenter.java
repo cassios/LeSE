@@ -8,18 +8,23 @@ package br.game.reuse.lese.presenters.consolepresenters;
 import br.game.reuse.lese.house.House;
 import br.game.reuse.lese.house.InitialHouse;
 import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
+import br.game.reuse.lese.presenters.interfaces.ProjectPresenter;
 import java.util.Scanner;
 
 /**
  *
  * @author bruno
  */
-public class ConsoleInitialHousePresenter implements MessagePresenter{
-    
+public class ConsoleInitialHousePresenter implements MessagePresenter {
+
     @Override
-    public void showContent(House house){
-        InitialHouse initialHouse = (InitialHouse)house;
+    public void showContent(House house) {
+        InitialHouse initialHouse = (InitialHouse) house;
         System.out.println(initialHouse.getMessage());
+        ProjectPresenter projectPresenter = new ConsoleProjectPresenter();
+        projectPresenter.showProjects();
+        System.out.println("\n1"
+                + "Você acaba de ganhar " + house.getOutcome().getPoints() + " pontos pela sua contratação. Avance " + house.getOutcome().getNumberOfHouses() + " casa.");
     }
 
     @Override
