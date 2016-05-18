@@ -15,7 +15,7 @@ import br.game.reuse.lese.content.ContentTransition;
 import br.game.reuse.lese.content.ContentVerification;
 import br.game.reuse.lese.outcome.HouseOutcome;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
-import br.game.reuse.lese.presenters.consolepresenters.ConsoleJokerHousePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleJokerPresenter;
 import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 import br.game.reuse.lese.question.JokerBoard;
@@ -66,7 +66,7 @@ public class JokerHouse extends House {
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
-        MessagePresenter jokerPresenter = new ConsoleJokerHousePresenter();
+        MessagePresenter jokerPresenter = new ConsoleJokerPresenter();
         jokerPresenter.showContent(this);
         jokerPresenter.continueGame();
     }

@@ -5,7 +5,6 @@
  */
 package br.game.reuse.lese.house;
 
-import br.game.reuse.lese.board.Board;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.content.ContentConstruction;
@@ -82,6 +81,8 @@ public class QuestionHouse extends House {
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
+        QuestionPresenter questionPresenter = new ConsoleQuestionPresenter();
+        questionPresenter.showFeedback(this);
         HousePresenter housePresenter = new ConsoleHousePresenter();
         housePresenter.showHouseInfo(p);
         this.correct = false;
