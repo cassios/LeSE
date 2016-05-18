@@ -15,11 +15,11 @@ import java.util.Scanner;
  *
  * @author bruno
  */
-public class ConsoleInitialHousePresenter implements MessagePresenter {
-
+public class ConsoleInitialHousePresenter implements MessagePresenter{
+    
     @Override
-    public void showContent(House house) {
-        InitialHouse initialHouse = (InitialHouse) house;
+    public void showContent(House house){
+        InitialHouse initialHouse = (InitialHouse)house;
         System.out.println(initialHouse.getMessage());
         ProjectPresenter projectPresenter = new ConsoleProjectPresenter();
         projectPresenter.showProjects();

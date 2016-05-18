@@ -17,10 +17,4 @@ public interface ProjectPresenter {
      */
     void showProjects();
     
-    /**
-     * Gets the project selected by the player.
-     * @return project id selected by the player
-     */
-    int getPlayerChoice();
-    
 }

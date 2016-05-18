@@ -48,7 +48,7 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
             Scanner scanner = new Scanner(System.in);
             option = scanner.nextInt();
             if (option < 1 || option > 4) {
-                System.out.println("Essa opção não existe! Digite a opção de 1 a 4 para responder a questão!!!");
+                System.out.println("Opção não existente. Digite a opção de 1 a 4 para responder a questão!!!");
             }
         }
         return choices.get(option-1);

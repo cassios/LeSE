@@ -31,7 +31,7 @@ public interface QuestionPresenter {
     
     /**
      * Obtains answer from the player
-     * @param choices
+     * @param question
      * @return player answer
      */
     String getPlayerAnswer(List<String> choices);

@@ -7,6 +7,8 @@ package br.game.reuse.lese.outcome;
 
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.house.JokerHouse;
+import br.game.reuse.lese.question.JokerBoard;
 
 /**
  *

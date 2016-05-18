@@ -7,10 +7,10 @@ package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
-//import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsolePlayerPresenter;
 import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
-//import br.game.reuse.lese.presenters.interfaces.GamePresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 import br.game.reuse.lese.presenters.interfaces.PlayerPresenter;
 
 /**
@@ -30,34 +30,34 @@ public class BoardGame {
 
     public void setUpGame() {
         PlayerPresenter playerPresenter = new ConsolePlayerPresenter();
-        //String playerName = playerPresenter.getPlayerName();
-        //this.board.addPlayer(playerName, "red");
+        String playerName = playerPresenter.getPlayerName();
+        this.board.addPlayer(playerName, "red");
     }
 
     public void init() {
         creatBoard(new BoardBuilder());
         this.board = Board.getInstance();
-        //GamePresenter gamePresenter = new ConsoleGamePresenter();
-        //gamePresenter.welcome();
+        GamePresenter gamePresenter = new ConsoleGamePresenter();
+        gamePresenter.welcome();
         int opcao = 0;
         do {
-//            opcao = gamePresenter.menu();
+            opcao = gamePresenter.menu();
             switch (opcao) {
                 case 1:
                     setUpGame();
                     run();
                     break;
                 case 2:
-//                    gamePresenter.showRanking();
+                    gamePresenter.showRanking();
                     break;
                 case 3:
-//                    gamePresenter.showHelp();
+                    gamePresenter.showHelp();
                     break;
                 case 4:
-//                    gamePresenter.showExit();
+                    gamePresenter.showExit();
                     break;
                 default:
-//                    gamePresenter.showDefault();
+                    gamePresenter.showDefault();
                     break;
             }
         } while (opcao != 4);
@@ -78,9 +78,8 @@ public class BoardGame {
                 }
             }
         }
-        
-        //TODO(MM) : this if is unnecessary 
-        if(winner != null) {
+
+        if (winner != null) {
             BoardPresenter boarPresenter = new ConsoleBoardPresenter();
             boarPresenter.showWinner(winner);
         }
