@@ -6,6 +6,7 @@
 package br.game.reuse.lese.board;
 
 import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.model.dao.PlayerDAO;
 import br.game.reuse.lese.question.ProjectBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,11 +73,12 @@ public class Board {
         return getHouseAtIndex(getPlayerHouseId(p));
     }
     
-//    public int updatePlayerPosition(PlayerBoard p, int nHouses) {
-//        int currentPos = getPlayerHouseId(p);
-//        int newPos = currentPos + nHouses;
-//        return this.players.put(p, newPos);
-//    }
+    public void storePlayers(){
+        for(Entry<PlayerBoard, PlayerBoard> item : this.players.entrySet()){
+            PlayerBoard player = item.getValue();
+            new PlayerDAO().createPlayer(player);
+        }
+    }
     
     public boolean hasWinner() {
         int finalHouseId = this.houses.size() - 1;
