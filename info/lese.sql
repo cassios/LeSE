@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 11-Maio-2016 às 17:18
+-- Data de Criação: 18-Maio-2016 às 18:12
 -- Versão do servidor: 5.5.46-0ubuntu0.14.04.2
 -- versão do PHP: 5.5.9-1ubuntu4.14
 
@@ -33,7 +33,27 @@ CREATE TABLE IF NOT EXISTS `answer` (
   `status` varchar(1) NOT NULL,
   PRIMARY KEY (`id_answer`),
   KEY `answer_question_FK` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Extraindo dados da tabela `answer`
+--
+
+INSERT INTO `answer` (`id_answer`, `question`, `description`, `status`) VALUES
+(1, 1, 'a', '0'),
+(2, 1, 'b', '0'),
+(3, 1, 'c', '1'),
+(4, 1, 'd', '0'),
+(5, 2, 'a1', '1'),
+(7, 2, 'a2', '0'),
+(8, 2, 'a3', '0'),
+(9, 2, 'a4', '0'),
+(10, 3, 'a', '1'),
+(11, 3, 'b', '0'),
+(12, 4, 'a', '1'),
+(13, 4, 'b', '0'),
+(14, 5, 'a', '1'),
+(15, 5, 'b', '0');
 
 -- --------------------------------------------------------
 
@@ -42,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `answer` (
 --
 
 CREATE TABLE IF NOT EXISTS `joker` (
-  `id_joker` int(11) NOT NULL,
+  `id_joker` int(11) NOT NULL AUTO_INCREMENT,
   `phase` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` longtext NOT NULL,
@@ -51,7 +71,18 @@ CREATE TABLE IF NOT EXISTS `joker` (
   `house` int(2) NOT NULL,
   PRIMARY KEY (`id_joker`),
   KEY `joker_phase_FK` (`phase`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `joker`
+--
+
+INSERT INTO `joker` (`id_joker`, `phase`, `title`, `description`, `action`, `score`, `house`) VALUES
+(1, 1, 'teste', 'teste', '1', 5, 0),
+(2, 2, 'teste2', 'teste2', '1', 5, 0),
+(3, 3, 'teste3', 'teste3', '1', 5, 0),
+(4, 4, 'teste4', 'teste4', '1', 5, 1),
+(5, 5, 'teste5', 'teste5', '1', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -88,7 +119,16 @@ CREATE TABLE IF NOT EXISTS `player` (
   `score` int(10) NOT NULL,
   PRIMARY KEY (`id_player`),
   KEY `user_user_FK` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `player`
+--
+
+INSERT INTO `player` (`id_player`, `user`, `score`) VALUES
+(2, 1, 174),
+(3, 2, 190),
+(4, 3, 184);
 
 -- --------------------------------------------------------
 
@@ -119,7 +159,18 @@ CREATE TABLE IF NOT EXISTS `question` (
   `house` int(2) NOT NULL,
   PRIMARY KEY (`id_question`),
   KEY `question_phase_FK` (`phase`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `question`
+--
+
+INSERT INTO `question` (`id_question`, `phase`, `description`, `explanation`, `score`, `house`) VALUES
+(1, 1, 'teste', 'teste', 5, 2),
+(2, 2, 'teste 2', 'teste 2', 3, 1),
+(3, 3, 'Na engenharia de requisitos, pode-se utilizar a seguinte técnica para o levantamento de requisitos de um software:\n\nI. Cenários.\nII. Joint Application Development (JAD).\nIII. Prototipação.\n\nQuais estão corretas?', 'dfasdfasdf', 0, 2),
+(4, 4, 'teste 3', 'teste 3', 5, 2),
+(5, 5, 'teste 4', 'teste 4', 10, 3);
 
 -- --------------------------------------------------------
 
@@ -147,7 +198,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`id_user`, `name`) VALUES
+(1, 'Bruno'),
+(2, 'Bruno'),
+(3, 'Bruno');
 
 --
 -- Constraints for dumped tables
