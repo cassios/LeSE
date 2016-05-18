@@ -57,6 +57,7 @@ public class BoardGame {
             }
         }
         
+        //TODO(MM) : this if is unnecessary 
         if(winner != null) {
             BoardPresenter boarPresenter = new ConsoleBoardPresenter();
             boarPresenter.showWinner(winner);

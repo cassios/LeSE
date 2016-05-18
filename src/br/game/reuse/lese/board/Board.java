@@ -18,6 +18,9 @@ import java.util.Map.Entry;
 public class Board {
     private static Board instance;
     private ArrayList<House> houses;
+    
+    //TODO(MM) - Maybe you meant a HashMap<String,PlayerBoard>? 
+    //The below map is redundant.
     private HashMap<PlayerBoard, PlayerBoard> players;
     private ProjectBoard project;
     
@@ -46,6 +49,9 @@ public class Board {
     }
     
     public void addPlayer(String nickname, String pawnColor) {
+        
+        //TODO(MM) - pawnColor is not being used, and we are 
+        //using a redundant hashMap
         PlayerBoard newPlayer = new PlayerBoard(nickname);
         this.players.put(newPlayer, newPlayer);
     }
