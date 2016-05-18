@@ -26,7 +26,8 @@ public class ContentElaboration extends ContentTemplate {
 
     private ContentElaboration() {
         this.phase = new PhaseDAO().selectPhasePerName(DevelopmentPhase.Elaboration.toString());
-        this.questionElaboration = new QuestionDAO().selectQuestionPerPhase(phase);
+        completeListQuestions();
+        completeListJokers();
     }
 
     public static ContentElaboration getInstance() {

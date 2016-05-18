@@ -42,9 +42,9 @@ public abstract class ContentTemplate {
         Joker j = draftJoker();
         HouseOutcome outcome;
         if(j.getAction().equals("1")){
-            outcome = new BonusOutcome(j.getHouse(), j.getScore(), (float) 0.0);
+            outcome = new BonusOutcome(1, j.getScore(), (float) 0.0);
         }else{
-            outcome = new PenalityOutcome(j.getHouse(), j.getScore());
+            outcome = new PenalityOutcome(1, j.getScore());
         }
         JokerBoard jokerBoard = new JokerBoard(j.getTitle(), j.getDescription());
         JokerHouse jokerUpdated = new JokerHouse(house.getId(), outcome, house.getDevPhase(), jokerBoard, house.getCycle());

@@ -26,7 +26,8 @@ public class ContentInception extends ContentTemplate{
     
     private ContentInception(){
         this.phase = new PhaseDAO().selectPhasePerName(DevelopmentPhase.Inception.toString());
-        this.questionInception = new QuestionDAO().selectQuestionPerPhase(phase);
+        completeListQuestions();
+        completeListJokers();
     }
     
     public static ContentInception getInstance(){

@@ -26,7 +26,8 @@ public class ContentVerification extends ContentTemplate{
 
     private ContentVerification() {
         this.phase = new PhaseDAO().selectPhasePerName(DevelopmentPhase.Verification.toString());
-        this.questionVerification = new QuestionDAO().selectQuestionPerPhase(phase);
+        completeListQuestions();
+        completeListJokers();
     }
 
     public static ContentVerification getInstance() {
