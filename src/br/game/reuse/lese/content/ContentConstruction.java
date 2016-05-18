@@ -26,7 +26,8 @@ public class ContentConstruction extends ContentTemplate{
 
     private ContentConstruction() {
         this.phase = new PhaseDAO().selectPhasePerName(DevelopmentPhase.Construction.toString());
-        this.questionConstruction = new QuestionDAO().selectQuestionPerPhase(phase);
+        completeListQuestions();
+        completeListJokers();
     }
 
     public static ContentConstruction getInstance() {

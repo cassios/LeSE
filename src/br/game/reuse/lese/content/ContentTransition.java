@@ -26,7 +26,8 @@ public class ContentTransition extends ContentTemplate{
 
     private ContentTransition() {
         this.phase = new PhaseDAO().selectPhasePerName(DevelopmentPhase.Transition.toString());
-        this.questionTransition = new QuestionDAO().selectQuestionPerPhase(phase);
+        completeListQuestions();
+        completeListJokers();
     }
 
     public static ContentTransition getInstance() {
