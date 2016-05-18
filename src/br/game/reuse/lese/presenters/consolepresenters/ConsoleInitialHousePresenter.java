@@ -23,8 +23,7 @@ public class ConsoleInitialHousePresenter implements MessagePresenter {
         System.out.println(initialHouse.getMessage());
         ProjectPresenter projectPresenter = new ConsoleProjectPresenter();
         projectPresenter.showProjects();
-        System.out.println("\n1"
-                + "Você acaba de ganhar " + house.getOutcome().getPoints() + " pontos pela sua contratação. Avance " + house.getOutcome().getNumberOfHouses() + " casa.");
+        System.out.println("\nVocê acaba de ganhar " + house.getOutcome().getPoints() + " pontos pela sua contratação. Avance " + house.getOutcome().getNumberOfHouses() + " casa.");
     }
 
     @Override

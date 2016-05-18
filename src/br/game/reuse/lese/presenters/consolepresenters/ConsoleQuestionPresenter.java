@@ -5,6 +5,8 @@
  */
 package br.game.reuse.lese.presenters.consolepresenters;
 
+import br.game.reuse.lese.house.House;
+import br.game.reuse.lese.house.QuestionHouse;
 import br.game.reuse.lese.presenters.interfaces.QuestionPresenter;
 import br.game.reuse.lese.question.QuestionBoard;
 import java.util.ArrayList;
@@ -53,8 +55,17 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
     }
 
     @Override
-    public void showFeedback(String feedback) {
-        System.out.println(feedback);
+    public void showFeedback(House house) {
+        QuestionHouse question = (QuestionHouse) house;
+        String feedback = "";
+        if(question.isCorrect()){
+            feedback = "Parabéns, você acertou!!!\n" + question.getQuestion().getEplanation()
+                        + "\nVocê ganhou " + question.getOutcome().getPoints() + " pontos. Avance " + question.getOutcome().getNumberOfHouses() + " casa(s).";
+        }else{
+            feedback = "Que pena, você errou.\n" + question.getQuestion().getEplanation()
+                        + "\nVocê perdeu " + question.getOutcome().getPoints() + " pontos.";
+        }
+        System.out.println("\n" + feedback + "\n");
     }
     
 }
