@@ -5,6 +5,7 @@
  */
 package br.game.reuse.lese.presenters.interfaces;
 
+import br.game.reuse.lese.house.House;
 import br.game.reuse.lese.question.QuestionBoard;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public interface QuestionPresenter {
     
     /**
      * Gives feedback to the user based on their answer.
-     * @param feedback
+     * @param house
      */
-    void showFeedback(String feedback);
+    void showFeedback(House house);
 }
