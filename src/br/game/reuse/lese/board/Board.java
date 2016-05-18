@@ -76,7 +76,7 @@ public class Board {
     public void storePlayers(){
         for(Entry<PlayerBoard, PlayerBoard> item : this.players.entrySet()){
             PlayerBoard player = item.getValue();
-            new PlayerDAO().createPlayer(player);
+            //new PlayerDAO().createPlayer(player);
         }
     }
     
