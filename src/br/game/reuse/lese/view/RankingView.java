@@ -29,6 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
@@ -98,12 +99,19 @@ public class RankingView extends JFrame implements ActionListener {
     }
 
     private void createCenter() {
-        String[] colunas = new String[]{"Nome do Jogador", "Pontuação"};
+        String[] colunas = new String[]{"Posição", "Nome do Jogador", "Pontuação"};
         String[][] dados = getData();
         JTable rankingTable = null;
         JScrollPane scroll = new JScrollPane();
         if (dados != null) {
             rankingTable = new JTable(dados, colunas);
+            DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
+            cellRender.setHorizontalAlignment(SwingConstants.CENTER);
+            rankingTable.getColumn(colunas[0]).setMaxWidth(100);
+            rankingTable.getColumn(colunas[0]).setCellRenderer(cellRender);
+            rankingTable.getColumn(colunas[2]).setMaxWidth(200);
+            rankingTable.getColumn(colunas[2]).setCellRenderer(cellRender);
+            rankingTable.getTableHeader().setReorderingAllowed(false);
             rankingTable.setEnabled(false);
             scroll.setViewportView(rankingTable);
         } else {
@@ -132,7 +140,7 @@ public class RankingView extends JFrame implements ActionListener {
             String[][] ranking = new String[listPlayers.size()][2];
             int index = 0;
             for (Player p : listPlayers) {
-                ranking[index] = new String[]{p.getName(), String.valueOf(p.getScore())};
+                ranking[index] = new String[]{String.valueOf(index+1)+"º", p.getName(), String.valueOf(p.getScore())};
                 index++;
             }
             return ranking;
