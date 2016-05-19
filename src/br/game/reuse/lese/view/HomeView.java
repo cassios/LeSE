@@ -146,7 +146,13 @@ public class HomeView extends JFrame implements ActionListener {
         } else if (ae.getActionCommand().equals("Ajuda")) {
             JOptionPane.showMessageDialog(null, "Texto de Ajuda sobre o Jogo", "Ajuda", JOptionPane.PLAIN_MESSAGE);
         } else if (ae.getActionCommand().equals("Iniciar Jogo")) {
-            System.out.println(nameField.getText());
+            if (!nameField.getText().isEmpty()) {
+                System.out.println(nameField.getText());
+                GameView game = new GameView();
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite seu nome antes de prosseguir para o jogo!!!", "Alerta", JOptionPane.WARNING_MESSAGE);
+            }
         } else if (ae.getActionCommand().equals("Sair")) {
             System.exit(0);
         }
