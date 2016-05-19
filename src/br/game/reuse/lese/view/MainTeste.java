@@ -16,9 +16,10 @@ public class MainTeste {
     
     public static void main(String[] args){
         HomeView start = new HomeView();
+//        RankingView start = new RankingView();
 //        StartGameView start = new StartGameView();
         start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        start.setSize(600, 600);
+        start.setSize(800, 500);
 //        start.getContentPane().setBackground(Color.yellow);
 //        start.pack();
         start.setVisible(true);
