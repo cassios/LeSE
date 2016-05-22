@@ -20,6 +20,9 @@ import br.game.reuse.lese.presenters.interfaces.PlayerPresenter;
 public class BoardGame {
 
     private Board board;
+    private BoardPresenter boardPresenter;
+    private GamePresenter gamePresenter;
+    private PlayerPresenter playerPresenter;
 
     public void creatBoard(BoardBuilder builder) {
 
@@ -29,7 +32,8 @@ public class BoardGame {
     }
 
     public void setUpGame() {
-        PlayerPresenter playerPresenter = new ConsolePlayerPresenter();
+        playerPresenter = new ConsolePlayerPresenter();
+        
         String playerName = playerPresenter.getPlayerName();
         this.board.addPlayer(playerName, "red");
     }
@@ -37,7 +41,7 @@ public class BoardGame {
     public void init() {
         creatBoard(new BoardBuilder());
         this.board = Board.getInstance();
-        GamePresenter gamePresenter = new ConsoleGamePresenter();
+        gamePresenter = new ConsoleGamePresenter();
         gamePresenter.welcome();
         int opcao = 0;
         do {
@@ -65,6 +69,7 @@ public class BoardGame {
 
     public void run() {
         PlayerBoard winner = null;
+        boardPresenter = new ConsoleBoardPresenter();
 
         while (winner == null) {
             for (PlayerBoard p : this.board.getPlayers()) {
@@ -78,10 +83,8 @@ public class BoardGame {
                 }
             }
         }
+        
+        boardPresenter.showWinner(winner);
 
-        if (winner != null) {
-            BoardPresenter boarPresenter = new ConsoleBoardPresenter();
-            boarPresenter.showWinner(winner);
-        }
     }
 }
