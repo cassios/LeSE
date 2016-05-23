@@ -29,7 +29,7 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
     public List<String> showChoices(QuestionBoard question) {
         int option = 1;
         List<String> choices = new ArrayList<>();
-        for(String choice : question.getChoices()){
+        for (String choice : question.getChoices()) {
             choices.add(choice);
         }
         Collections.shuffle(choices);
@@ -43,29 +43,29 @@ public class ConsoleQuestionPresenter implements QuestionPresenter {
     @Override
     public String getPlayerAnswer(List<String> choices) {
         int option = 0;
-        while (option < 1 || option > 4) {
+        while (option < 1 || option > choices.size()) {
             System.out.println("Digite a opção que você acha correta: ");
             Scanner scanner = new Scanner(System.in);
             option = scanner.nextInt();
             if (option < 1 || option > 4) {
-                System.out.println("Opção não existente. Digite a opção de 1 a 4 para responder a questão!!!");
+                System.out.println("Opção não existente. Digite a opção de 1 a " + choices.size() + " para responder a questão!!!");
             }
         }
-        return choices.get(option-1);
+        return choices.get(option - 1);
     }
 
     @Override
     public void showFeedback(House house) {
         QuestionHouse question = (QuestionHouse) house;
         String feedback = "";
-        if(question.isCorrect()){
+        if (question.isCorrect()) {
             feedback = "Parabéns, você acertou!!!\n" + question.getQuestion().getEplanation()
-                        + "\nVocê ganhou " + question.getOutcome().getPoints() + " pontos. Avance " + question.getOutcome().getNumberOfHouses() + " casa(s).";
-        }else{
+                    + "\nVocê ganhou " + question.getOutcome().getPoints() + " pontos. Avance " + question.getOutcome().getNumberOfHouses() + " casa(s).";
+        } else {
             feedback = "Que pena, você errou.\n" + question.getQuestion().getEplanation()
-                        + "\nVocê perdeu " + question.getOutcome().getPoints() + " pontos.";
+                    + "\nVocê perdeu " + question.getOutcome().getPoints() + " pontos.";
         }
         System.out.println("\n" + feedback + "\n");
     }
-    
+
 }
