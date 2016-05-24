@@ -43,7 +43,7 @@ public class PlayerBoard {
     }
 
     public int getCurrentCycle() {
-        return this.currentPos;
+        return this.currentCycle;
     }
 
     public void move(int nHouses) {
