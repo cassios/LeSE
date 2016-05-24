@@ -24,7 +24,7 @@ public class ConsoleGamePresenter implements GamePresenter {
         System.out.println("2 - Acessar Ranking");
         System.out.println("3 - Ajuda");
         System.out.println("4 - Exit\n");
-        System.out.println("Escolha a opção: ");
+        System.out.print("Escolha a opção: ");
         Scanner entrada = new Scanner(System.in);
         return entrada.nextInt();
     }
@@ -39,7 +39,7 @@ public class ConsoleGamePresenter implements GamePresenter {
                 System.out.println(position + " - " + p.getName() + " -------------------- " + p.getScore());
                 position++;
             }
-        }else{
+        } else {
             System.out.println("Ranking vazio.");
         }
     }
@@ -62,6 +62,35 @@ public class ConsoleGamePresenter implements GamePresenter {
     @Override
     public void welcome() {
         System.out.println("Seja Bem Vindo ao LeSE!");
+    }
+
+    @Override
+    public void cleanConsole() {
+        try {
+            final String os = System.getProperty("os.name");
+            if (os.contains("Windows")) {
+                Runtime.getRuntime().exec("cls");
+            } else {
+                Runtime.getRuntime().exec("clear");
+                System.out.println("\f");
+            }
+        } catch (final Exception e) {
+            System.out.println("Algo deu errado :(");
+        }
+    }
+    
+    @Override
+    public boolean continueGame() {
+        String option = "";
+        do{
+            System.out.print("Digite s para continuar ou n para finalizar o jogo: ");
+            Scanner scanner = new Scanner(System.in);
+            option = scanner.nextLine();
+            if(!option.equals("s") && !option.equals("n")){
+                System.out.println("Opção inválida! Tente novamente.");
+            }
+        }while(!option.equals("s") && !option.equals("n"));
+        return option.equals("s");
     }
 
 }

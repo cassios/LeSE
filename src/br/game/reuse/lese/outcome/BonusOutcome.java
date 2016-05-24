@@ -9,8 +9,6 @@ import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.house.House;
 import br.game.reuse.lese.house.IntermediateHouse;
 import br.game.reuse.lese.house.QuestionHouse;
-import br.game.reuse.lese.presenters.consolepresenters.ConsoleQuestionPresenter;
-import br.game.reuse.lese.presenters.interfaces.QuestionPresenter;
 
 /**
  *

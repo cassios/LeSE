@@ -7,6 +7,7 @@ package br.game.reuse.lese.presenters.consolepresenters;
 
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 
 /**
  *
@@ -32,6 +33,28 @@ public class ConsoleBoardPresenter implements BoardPresenter {
     @Override
     public void showWinner(PlayerBoard player) {
         System.out.println("Player " + player.getNickname() + " won!!!");
+    }
+
+    @Override
+    public void showHeaderGame(PlayerBoard player) {
+        GamePresenter gamePresenter = new ConsoleGamePresenter();
+        gamePresenter.cleanConsole();
+        System.out.println("----------------------------------Informações---------------------------------------------");
+        System.out.print("Jogador: ");
+        System.out.println(player.getNickname());
+        System.out.print("Pontuação: ");
+        System.out.println(player.getCurrentScore());
+        System.out.print("Ciclo Atual: ");
+        System.out.println(player.getCurrentCycle());
+        System.out.print("Casa Atual: ");
+        System.out.println(player.getCurrentPos() + 1);
+        System.out.println("------------------------------------------------------------------------------------------\n");
+    }
+
+    @Override
+    public void finalizeGame() {
+        System.out.println("\f");
+        System.out.println("Você finalizou o jogo!");
     }
     
 }

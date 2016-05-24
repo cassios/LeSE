@@ -16,8 +16,8 @@ public class ConsoleHousePresenter implements HousePresenter {
 
     @Override
     public void showHouseInfo(PlayerBoard p) {
-        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
-        System.out.println("Pontuação Atual: " + p.getCurrentScore());
+//        System.out.println("Casa Atual: " + (p.getPawnPosition().getId() + 1));
+//        System.out.println("Pontuação Atual: " + p.getCurrentScore());
     }
     
 }

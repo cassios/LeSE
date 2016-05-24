@@ -25,11 +25,4 @@ public class ConsoleInitialHousePresenter implements MessagePresenter{
         projectPresenter.showProjects();
         System.out.println("\nVocê acaba de ganhar " + house.getOutcome().getPoints() + " pontos pela sua contratação. Avance " + house.getOutcome().getNumberOfHouses() + " casa.");
     }
-
-    @Override
-    public void continueGame() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite 0 para continuar.");
-        int option = scanner.nextInt();
-    }
 }

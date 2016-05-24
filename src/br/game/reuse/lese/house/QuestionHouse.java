@@ -14,9 +14,11 @@ import br.game.reuse.lese.content.ContentTemplate;
 import br.game.reuse.lese.content.ContentTransition;
 import br.game.reuse.lese.content.ContentVerification;
 import br.game.reuse.lese.outcome.HouseOutcome;
-import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleQuestionPresenter;
-import br.game.reuse.lese.presenters.interfaces.HousePresenter;
+import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 import br.game.reuse.lese.presenters.interfaces.QuestionPresenter;
 import br.game.reuse.lese.question.QuestionBoard;
 import java.util.List;
@@ -70,6 +72,8 @@ public class QuestionHouse extends House {
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
+        BoardPresenter boardPresenter = new ConsoleBoardPresenter();
+        boardPresenter.showHeaderGame(p);
         QuestionPresenter questionPresenter = new ConsoleQuestionPresenter();
         questionPresenter.showQuestion(this.question);
         List<String> choices = questionPresenter.showChoices(this.question);
@@ -80,11 +84,9 @@ public class QuestionHouse extends House {
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
-        outcome.apply(p, this);
         QuestionPresenter questionPresenter = new ConsoleQuestionPresenter();
         questionPresenter.showFeedback(this);
-        HousePresenter housePresenter = new ConsoleHousePresenter();
-        housePresenter.showHouseInfo(p);
+        outcome.apply(p, this);
         this.correct = false;
     }
 

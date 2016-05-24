@@ -41,4 +41,15 @@ public interface GamePresenter {
      * Shows LeSe's Default Screen to the user.
      */
     void welcome();
+    
+    /**
+     * Clean Console's Game.
+     */
+    void cleanConsole();
+    
+    /**
+     * Pause Game.
+     * @return 
+     */
+    boolean continueGame();
 }

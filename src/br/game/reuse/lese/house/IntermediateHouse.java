@@ -8,8 +8,12 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleIntermediateHousePresenter;
+import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 
@@ -37,17 +41,16 @@ public class IntermediateHouse extends House {
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
+        BoardPresenter boardPresenter = new ConsoleBoardPresenter();
+        boardPresenter.showHeaderGame(p);
         MessagePresenter intermediatePresenter = new ConsoleIntermediateHousePresenter();
         intermediatePresenter.showContent(this);
-        intermediatePresenter.continueGame();
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        HousePresenter housePresenter = new ConsoleHousePresenter();
-        housePresenter.showHouseInfo(p);
     }
 
 }

@@ -14,8 +14,12 @@ import br.game.reuse.lese.content.ContentTemplate;
 import br.game.reuse.lese.content.ContentTransition;
 import br.game.reuse.lese.content.ContentVerification;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleJokerPresenter;
+import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 import br.game.reuse.lese.question.JokerBoard;
@@ -66,17 +70,16 @@ public class JokerHouse extends House {
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
+        BoardPresenter boardPresenter = new ConsoleBoardPresenter();
+        boardPresenter.showHeaderGame(p);
         MessagePresenter jokerPresenter = new ConsoleJokerPresenter();
         jokerPresenter.showContent(this);
-        jokerPresenter.continueGame();
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        HousePresenter housePresenter = new ConsoleHousePresenter();
-        housePresenter.showHouseInfo(p);
     }
     
     public void updateContent(House house){

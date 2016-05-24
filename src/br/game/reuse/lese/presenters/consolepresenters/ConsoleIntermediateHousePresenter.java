@@ -21,12 +21,5 @@ public class ConsoleIntermediateHousePresenter implements MessagePresenter{
         IntermediateHouse initialHouse = (IntermediateHouse)house;
         System.out.println(initialHouse.getMessage());
     }
-
-    @Override
-    public void continueGame() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite 0 para continuar.");
-        int option = scanner.nextInt();
-    }
     
 }

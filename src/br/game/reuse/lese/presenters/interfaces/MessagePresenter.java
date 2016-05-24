@@ -20,10 +20,4 @@ public interface MessagePresenter {
      */
     void showContent(House house);
 
-    /**
-     * Displays question choices to the player.
-     *
-     */
-    void continueGame();
-
 }

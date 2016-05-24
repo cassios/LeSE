@@ -32,6 +32,10 @@ public class QuestionBoard {
         return this.explanation;
     }
     
+    public String getAnswer() {
+        return this.answer;
+    }
+    
     public void addChoice(String choice, boolean isAnswer) {
         this.choices.add(choice);
         if(isAnswer) this.answer = choice;

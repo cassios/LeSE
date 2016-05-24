@@ -33,9 +33,11 @@ public class BoardGame {
 
     public void setUpGame() {
         playerPresenter = new ConsolePlayerPresenter();
-        
+
         String playerName = playerPresenter.getPlayerName();
         this.board.addPlayer(playerName, "red");
+        GamePresenter gamePresenter = new ConsoleGamePresenter();
+        gamePresenter.cleanConsole();
     }
 
     public void init() {
@@ -70,21 +72,25 @@ public class BoardGame {
     public void run() {
         PlayerBoard winner = null;
         boardPresenter = new ConsoleBoardPresenter();
+        boolean continueGame = true;
 
-        while (winner == null) {
+        while (winner == null && continueGame) {
             for (PlayerBoard p : this.board.getPlayers()) {
                 House playerHouse = this.board.getPlayerHouse(p);
                 playerHouse.execute(p);
+                GamePresenter gamePresenter = new ConsoleGamePresenter();
+                continueGame = gamePresenter.continueGame();
 
                 if (this.board.hasWinner()) {
                     winner = this.board.getWinner();
                     this.board.storePlayers();
+                    boardPresenter.showWinner(winner);
                     break;
+                }else if(!continueGame){
+                    boardPresenter.finalizeGame();
                 }
             }
         }
-        
-        boardPresenter.showWinner(winner);
 
     }
 }

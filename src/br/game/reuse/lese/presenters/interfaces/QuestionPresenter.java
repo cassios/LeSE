@@ -41,4 +41,10 @@ public interface QuestionPresenter {
      * @param house
      */
     void showFeedback(House house);
+    
+    /**
+     * Gives warning to the user based on their answer.
+     * @param feedback 
+     */
+    void showWarning(String feedback);
 }

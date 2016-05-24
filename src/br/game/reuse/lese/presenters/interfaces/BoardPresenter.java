@@ -37,4 +37,15 @@ public interface BoardPresenter {
      * @param player a player object
      */
     void showWinner(PlayerBoard player);
+    
+    /**
+     * Displays header's game.
+     * @param player a player object
+     */
+    void showHeaderGame(PlayerBoard player);
+    
+    /**
+     * Exit game and go back to main game menu.
+     */
+    void finalizeGame();
 }

@@ -8,8 +8,12 @@ package br.game.reuse.lese.house;
 import br.game.reuse.lese.board.DevelopmentPhase;
 import br.game.reuse.lese.board.PlayerBoard;
 import br.game.reuse.lese.outcome.HouseOutcome;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleBoardPresenter;
+import br.game.reuse.lese.presenters.consolepresenters.ConsoleGamePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleHousePresenter;
 import br.game.reuse.lese.presenters.consolepresenters.ConsoleInitialHousePresenter;
+import br.game.reuse.lese.presenters.interfaces.BoardPresenter;
+import br.game.reuse.lese.presenters.interfaces.GamePresenter;
 import br.game.reuse.lese.presenters.interfaces.HousePresenter;
 import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
 
@@ -18,13 +22,14 @@ import br.game.reuse.lese.presenters.interfaces.MessagePresenter;
  * @author cass
  */
 public class InitialHouse extends House {
+
     private final String message;
-    
+
     public InitialHouse(int id, HouseOutcome outcome, DevelopmentPhase phase, String msg, int cycle) {
         super(id, outcome, phase, cycle);
         this.message = msg;
     }
-    
+
     public String getMessage() {
         return this.message;
     }
@@ -36,16 +41,15 @@ public class InitialHouse extends House {
 
     @Override
     protected void interactWithPlayer(PlayerBoard p) {
+        BoardPresenter boardPresenter = new ConsoleBoardPresenter();
+        boardPresenter.showHeaderGame(p);
         MessagePresenter initialPresenter = new ConsoleInitialHousePresenter();
         initialPresenter.showContent(this);
-        initialPresenter.continueGame();
     }
 
     @Override
     protected void applyOutcome(PlayerBoard p) {
         HouseOutcome outcome = getOutcome();
         outcome.apply(p, this);
-        HousePresenter housePresenter = new ConsoleHousePresenter();
-        housePresenter.showHouseInfo(p);
     }
 }
