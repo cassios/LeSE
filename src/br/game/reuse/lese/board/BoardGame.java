@@ -87,6 +87,7 @@ public class BoardGame {
                     boardPresenter.showWinner(winner);
                     break;
                 }else if(!continueGame){
+                    this.board.destroyPlayers();
                     boardPresenter.finalizeGame();
                 }
             }

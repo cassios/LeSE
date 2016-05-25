@@ -103,4 +103,8 @@ public class Board {
     public ProjectBoard getProjectBoard(){
         return this.project;
     }
+    
+    public void destroyPlayers(){
+        this.players.clear();
+    }
 }
