@@ -19,6 +19,11 @@ import java.util.Map.Entry;
 public class Board {
     private static Board instance;
     private ArrayList<House> houses;
+    
+    //TODO(MM) - change this map and everything that uses it
+    //There doesn't seem to be a reason to use a Map of PlayerBoard->PlayerBoard
+    //Maybe we can use a Map of PlayerName(string) -> PlayerBoard or a simple
+    //ist of PlayerBoard instead?
     private HashMap<PlayerBoard, PlayerBoard> players;
     private ProjectBoard project;
     

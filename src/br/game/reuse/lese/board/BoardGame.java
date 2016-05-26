@@ -23,27 +23,26 @@ public class BoardGame {
     private BoardPresenter boardPresenter;
     private GamePresenter gamePresenter;
     private PlayerPresenter playerPresenter;
-
-    public void creatBoard(BoardBuilder builder) {
+    
+    public void createBoard(BoardBuilder builder) {
 
         builder.buildBoard();
         builder.buildProject();
         builder.buildHouses();
     }
 
-    public void setUpGame() {
-        playerPresenter = new ConsolePlayerPresenter();
-
+    public void setUpGame() {        
         String playerName = playerPresenter.getPlayerName();
         this.board.addPlayer(playerName, "red");
-        GamePresenter gamePresenter = new ConsoleGamePresenter();
+
         gamePresenter.cleanConsole();
     }
 
     public void init() {
-        creatBoard(new BoardBuilder());
+        createBoard(new BoardBuilder());
         this.board = Board.getInstance();
-        gamePresenter = new ConsoleGamePresenter();
+        initAllPresenters();
+        
         gamePresenter.welcome();
         int opcao = 0;
         do {
@@ -71,14 +70,12 @@ public class BoardGame {
 
     public void run() {
         PlayerBoard winner = null;
-        boardPresenter = new ConsoleBoardPresenter();
         boolean continueGame = true;
 
         while (winner == null && continueGame) {
             for (PlayerBoard p : this.board.getPlayers()) {
                 House playerHouse = this.board.getPlayerHouse(p);
                 playerHouse.execute(p);
-                GamePresenter gamePresenter = new ConsoleGamePresenter();
                 continueGame = gamePresenter.continueGame();
 
                 if (this.board.hasWinner()) {
@@ -94,4 +91,19 @@ public class BoardGame {
         }
 
     }
+    
+    protected void initAllPresenters() {
+        if (boardPresenter == null) {
+            boardPresenter = new ConsoleBoardPresenter();
+        }
+        
+        if (gamePresenter == null) {
+            gamePresenter = new ConsoleGamePresenter();
+        }
+        
+        if (playerPresenter == null) {
+            playerPresenter = new ConsolePlayerPresenter();
+        }
+    }
+         
 }
