@@ -853,8 +853,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id_user`, `name`) VALUES
 (1, 'Bruno'),
-(2, 'Bruno'),
-(3, 'Bruno');
+(2, 'MM'),
+(3, 'Cass');
 
 --
 -- Constraints for dumped tables
