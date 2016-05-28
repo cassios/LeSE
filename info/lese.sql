@@ -852,9 +852,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `name`) VALUES
-(1, 'Bruno'),
-(2, 'MM'),
-(3, 'Cass');
+(1, 'MM'),
+(2, 'Cass'),
+(3, 'Bruno');
 
 --
 -- Constraints for dumped tables
