@@ -853,9 +853,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id_user`, `name`) VALUES
 (1, 'MM'),
-(2, 'Cass'),
-(3, 'Bruno');
+(2, 'Bruno'),
+(3, 'Cass');
 
+-- Cria professor padrão. Email: teacher@ufmg.br, Senha: senha123
+INSERT INTO teacher VALUES('66666666666', 1, 'UFMG', 'teacher@ufmg.br', 'E7D80FFEEFA212B7C5C55700E4F7193E');
 --
 -- Constraints for dumped tables
 --
